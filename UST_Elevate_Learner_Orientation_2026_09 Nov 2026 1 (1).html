@@ -1,0 +1,1843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UST Elevate, Learner Orientation 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --teal:#006E74; --teal2:#0097AC; --ink:#231F20; --bg:#FFFFFF; --bg2:#F5F7F8;
+  --gray:#6B7280; --line:#E1E6E8; --tsoft:#E8F2F3; --tsoft2:#D3E8EA;
+  --ok:#2E7D32; --warn:#ED6C02; --crit:#D32F2F; --yel:#F2B600;
+  --sans:'Aptos','Figtree','Segoe UI',system-ui,sans-serif;
+  --disp:'Archivo','Aptos','Segoe UI',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+  --ease:cubic-bezier(.22,.61,.36,1); --px:40px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{background:var(--bg2);font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,[tabindex]:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--teal2);outline-offset:2px}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;display:block}
+.ibox{width:40px;height:40px;border-radius:11px;background:var(--tsoft);color:var(--teal);display:grid;place-items:center;flex:none}
+.deep .ibox{background:rgba(255,255,255,.14);color:#fff}
+
+/* app shell */
+.app{display:grid;grid-template-columns:268px 1fr;height:100vh}
+.side{background:#FFFFFF;border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+.brand{display:flex;align-items:center;gap:14px;padding:20px 22px 18px;border-bottom:1px solid var(--line)}
+.logo{background:#FFFFFF;padding:4px;display:grid;place-items:center;flex:none}
+.logo img{height:44px;width:auto;display:block}
+.brand b{font:700 16px/1.15 var(--disp);display:block}
+.brand span{font-size:12px;color:var(--gray)}
+.navlist{flex:1;overflow:auto;padding:8px 12px;display:grid;gap:1px;align-content:start}
+.ni{display:grid;grid-template-columns:30px 1fr auto;align-items:center;gap:10px;padding:6px 10px;border-radius:10px;font-size:14px;font-weight:600;color:#3E4450;text-align:left;transition:background .15s,color .15s;position:relative}
+.ni .ibox{width:30px;height:30px;border-radius:8px;background:var(--bg2);color:var(--gray);transition:all .2s}
+.ni .ibox svg{width:18px;height:18px}
+.ni:hover{background:var(--bg2)}
+.ni.cur{background:var(--tsoft);color:var(--teal)}
+.ni.cur .ibox{background:var(--teal);color:#fff}
+.ni .vt{display:inline-block;vertical-align:middle;width:8px;height:8px;border-radius:50%;background:transparent;border:1.5px solid var(--line)}
+.ni.seen .vt{background:var(--teal2);border-color:var(--teal2)}
+.ni .cnt{font:500 10.5px var(--mono);color:var(--gray);margin-right:4px}
+.sfoot{padding:16px 22px 20px;border-top:1px solid var(--line)}
+.sfoot .lbl{display:flex;justify-content:space-between;font-size:12px;color:var(--gray);margin-bottom:8px}
+.sfoot .lbl b{color:var(--teal);font-weight:600}
+.sfoot .bar{height:6px;border-radius:3px;background:var(--bg2);overflow:hidden}
+.sfoot .bar i{display:block;height:100%;background:var(--teal);width:0;transition:width .5s var(--ease);border-radius:3px}
+.main{display:flex;flex-direction:column;min-width:0;min-height:0}
+.phead{display:flex;align-items:center;gap:20px;padding:16px 32px;background:#FFFFFF;border-bottom:1px solid var(--line);min-height:68px}
+.crumb{font-size:12px;color:var(--gray);white-space:nowrap}
+.crumb b{display:block;font:700 18px var(--disp);color:var(--ink);margin-top:2px}
+.subwrap{margin-left:auto;display:flex;align-items:center;gap:12px}
+.sublbl{font-size:12px;font-weight:700;color:var(--warn);background:#FDEEE0;padding:6px 10px;border-radius:8px;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.sublbl::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--warn);animation:pulse 1.4s infinite}
+.sublbl.done{color:var(--ok);background:#EEF6EF}.sublbl.done::before{background:var(--ok);animation:none}
+.subtabs{display:flex;gap:6px;background:var(--tsoft);padding:5px;border-radius:12px;border:1px solid var(--tsoft2)}
+.subwrap.none{display:none}
+.subtabs button{padding:10px 18px;border-radius:9px;font-size:14.5px;font-weight:700;color:var(--teal);position:relative;transition:all .2s;display:flex;align-items:center;gap:8px}
+.subtabs button i{font:600 11px var(--mono);font-style:normal;width:20px;height:20px;border-radius:50%;background:#FFFFFF;display:grid;place-items:center}
+.subtabs button.nv::after{content:'';position:absolute;top:5px;right:6px;width:8px;height:8px;border-radius:50%;background:var(--warn);box-shadow:0 0 0 2px var(--tsoft)}
+.subtabs button.sel i{background:rgba(255,255,255,.2);color:#fff}
+.subtabs button:hover{background:rgba(255,255,255,.7)}
+.subtabs button.sel{background:var(--teal);color:#fff;box-shadow:0 2px 8px rgba(0,110,116,.25)}
+.nsub{display:none;margin:2px 0 6px 44px;border-left:2px solid var(--tsoft2);padding-left:8px}
+.nsub.open{display:grid;gap:1px}
+.nsub button{text-align:left;font-size:13px;font-weight:600;color:var(--gray);padding:6px 10px;border-radius:8px;display:flex;justify-content:space-between;align-items:center}
+.nsub button:hover{background:var(--bg2)}
+.nsub button.sel{color:var(--teal);background:var(--tsoft)}
+.nsub button.nv::after{content:'';width:7px;height:7px;border-radius:50%;background:var(--warn)}
+.stage{flex:1;overflow:auto;padding:24px 28px;min-height:0}
+.pfoot{display:flex;justify-content:space-between;align-items:center;padding:12px 28px;background:#FFFFFF;border-top:1px solid var(--line)}
+.pfoot button{display:flex;align-items:center;gap:10px;padding:9px 14px;border-radius:10px;font-size:13.5px;font-weight:600;color:var(--teal);border:1px solid var(--line);transition:all .2s;max-width:45%}
+.pfoot button:hover{border-color:var(--teal);background:var(--tsoft)}
+.pfoot button.nx{background:var(--teal);color:#fff;border-color:var(--teal)}
+.pfoot button.nx:hover{background:#005A5F}
+.pfoot button[disabled]{opacity:.35;pointer-events:none}
+.pfoot button small{display:block;font-size:11px;font-weight:500;opacity:.75;text-align:left}
+.pfoot .keys{font-size:12px;color:var(--gray)}
+.pfoot .keys kbd{font:500 11px var(--mono);border:1px solid var(--line);border-radius:5px;padding:1px 6px;background:var(--bg2)}
+
+/* panels */
+.slide{display:none;background:#FFFFFF;border:1px solid var(--line);border-radius:18px;padding:36px 44px 32px;min-height:100%;position:relative}
+.slide.active{display:block}
+.slide.deep{background:var(--teal);color:#fff;border-color:var(--teal)}
+.slide .head,.slide>*:not(.ring):not(.orbit):not(.slogo){opacity:0;transform:translateY(12px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.slide.seen .head,.slide.seen>*:not(.ring):not(.orbit):not(.slogo){opacity:1;transform:none}
+.slide.seen>*:nth-child(3){transition-delay:.08s}.slide.seen>*:nth-child(4){transition-delay:.14s}.slide.seen>*:nth-child(5){transition-delay:.2s}
+.head{margin-bottom:24px}
+.kick{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:600;color:var(--teal);margin-bottom:10px}
+.kick::before{content:"";width:36px;height:3px;border-radius:2px;background:var(--teal)}
+.deep .kick{color:#fff}.deep .kick::before{background:#fff}
+h2.title{font:700 32px/1.12 var(--disp);letter-spacing:-.015em;text-wrap:pretty;max-width:1100px}
+.sub{font-size:16.5px;color:var(--gray);margin-top:10px;max-width:980px;line-height:1.45}
+.deep .sub{color:rgba(255,255,255,.8)}
+.src{display:block;margin-top:24px;font-size:11.5px;color:var(--gray);font-style:italic}
+.deep .src{color:rgba(255,255,255,.6)}
+.ph{display:inline-block;border:1px dashed var(--warn);color:var(--warn);padding:1px 6px;border-radius:5px;font-size:12px;font-style:normal;font-weight:600}
+.deep .ph{border-color:#FFD08A;color:#FFD08A}
+.mono{font-family:var(--mono)}
+.hint{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:6px}
+.hint::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--teal2);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* ---------- 1 cover ---------- */
+.cover{padding:0!important;height:100%;min-height:560px;overflow:hidden;--px:64px}
+.cover .wrap{position:absolute;left:var(--px);top:13%;right:42%}
+.cover .eyebrow{font-size:15px;color:rgba(255,255,255,.8);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.cover .eyebrow::before{content:"";width:44px;height:2px;background:#fff}
+.cover h1{font:800 clamp(56px,6.4vw,96px)/.92 var(--disp);letter-spacing:-.035em}
+.cover h1 .l{display:block;overflow:hidden}
+.cover h1 .l span{display:block;transform:translateY(105%);transition:transform .9s var(--ease)}
+.cover.seen h1 .l span{transform:none}
+.cover.seen h1 .l:nth-child(2) span{transition-delay:.12s}
+.cover .lede{font-size:20px;line-height:1.45;color:rgba(255,255,255,.88);max-width:620px;margin-top:28px}
+.cover .phases{position:absolute;left:var(--px);right:var(--px);bottom:48px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.cover .phases button{padding:16px 16px 14px;font-size:15px;font-weight:600;color:rgba(255,255,255,.6);transition:all .4s;position:relative;text-align:left;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:12px;display:grid;grid-template-columns:40px 1fr;gap:4px 12px;align-items:center}
+.cover .phases button .ibox{grid-row:span 2;background:rgba(255,255,255,.12);color:#fff}
+.cover .phases button:hover{background:rgba(255,255,255,.14)}
+.cover .phases button::before{content:"";position:absolute;top:-1px;left:12px;height:3px;width:0;background:#fff;border-radius:2px;transition:width .6s var(--ease)}
+.cover .phases button.lit{color:#fff;border-color:rgba(255,255,255,.4)}.cover .phases button.lit::before{width:calc(100% - 24px)}
+.cover .phases b{display:block;font:500 11.5px var(--mono);opacity:.7;align-self:end}
+.cover .ring{position:absolute;right:-180px;top:-140px;width:720px;height:720px;border-radius:50%;border:1px solid rgba(255,255,255,.14)}
+.cover .ring.r2{right:-60px;top:-20px;width:480px;height:480px}
+.cover .ring.r3{right:60px;top:100px;width:240px;height:240px;border-color:rgba(255,255,255,.3)}
+.cover .orbit{position:absolute;right:180px;top:220px;width:0;height:0}
+.cover .orbit i{position:absolute;width:10px;height:10px;background:#fff;border-radius:50%;left:-5px;top:-5px;offset-path:circle(120px);animation:orb 9s linear infinite}
+@keyframes orb{to{offset-distance:100%}}
+.start{margin-top:28px;display:inline-block;padding:12px 20px;background:#FFFFFF;color:var(--teal);font-weight:700;font-size:15px;text-decoration:none;transition:background .2s}
+.start:hover{background:var(--tsoft)}
+
+/* ---------- 2 journey ---------- */
+.journey{position:relative;height:250px;margin-top:8px}
+.journey svg{position:absolute;inset:0}
+.jnode{position:absolute;top:84px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;width:150px;text-align:center}
+.jnode .c{width:56px;height:56px;border-radius:50%;border:2px solid var(--teal);background:#fff;display:grid;place-items:center;font:600 18px var(--disp);color:var(--teal);transition:all .25s}
+.jnode.sel .c,.jnode:hover .c{background:var(--teal);color:#fff}
+.jnode .n{font-size:15px;font-weight:600;line-height:1.25}
+.jnode .d{font:500 11.5px var(--mono);color:var(--gray)}
+.jgate{position:absolute;top:100px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;width:110px}
+.jgate .g{width:22px;height:22px;transform:rotate(45deg);border:2px solid var(--teal2);background:#fff;transition:all .25s}
+.jgate.offer .g{background:var(--ok);border-color:var(--ok)}
+.jgate.sel .g,.jgate:hover .g{background:var(--teal2)}
+.jgate.offer.sel .g,.jgate.offer:hover .g{background:var(--ok)}
+.jgate .n{font-size:12.5px;font-weight:600;color:var(--teal2);text-align:center}
+.jgate.offer .n{color:var(--ok)}
+.jstart{position:absolute;top:96px;left:0;font:600 13px var(--sans);color:var(--gray);display:flex;flex-direction:column;gap:6px}
+.jstart i{width:30px;height:30px;border:2px solid var(--gray);display:grid;place-items:center;font:600 10px var(--mono);font-style:normal}
+.jdetail{display:grid;grid-template-columns:280px 1fr;gap:32px;border-top:2px solid var(--ink);padding-top:20px;min-height:150px}
+.jdetail h3{font:700 24px/1.15 var(--disp);color:var(--teal)}
+.jdetail .meta{font:500 12px var(--mono);color:var(--gray);margin-top:8px}
+.jdetail ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 32px}
+.jdetail li{font-size:15px;line-height:1.4;padding-left:18px;position:relative}
+.jdetail li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:2px;background:var(--teal2)}
+.fadein{animation:fi .35s var(--ease)}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ---------- 3 foundation ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:28px}
+.stat{padding:18px 0 16px;border-right:1px solid var(--line);padding-left:20px}
+.stat:first-child{padding-left:0}.stat:last-child{border-right:0}
+.stat .num{font:500 54px/1 var(--disp);color:var(--teal);letter-spacing:-.02em}
+.stat .lab{font-size:14px;color:var(--gray);margin-top:6px}
+.sprintbar{display:flex;gap:8px;min-height:196px}
+.sp{flex:var(--w);background:var(--bg2);border-top:4px solid var(--teal);padding:16px 18px;display:flex;flex-direction:column;justify-content:space-between;transition:background .2s;cursor:pointer;text-align:left}
+.sp:nth-child(2){border-color:var(--teal2)}.sp:nth-child(3){border-color:var(--teal)}.sp:nth-child(4){border-color:var(--teal2)}
+.sp:hover{background:var(--tsoft)}
+.sp .w{font:500 11.5px var(--mono);color:var(--gray)}
+.sp .t{font:700 18px/1.2 var(--disp);margin-top:4px}
+.sp .o{font-size:13px;color:var(--teal);font-weight:600}
+.sp .o small{display:block;color:var(--gray);font-weight:400;margin-bottom:2px}
+.stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px;align-items:center}
+.stack span{font-size:12.5px;padding:4px 10px;border:1px solid var(--line);color:var(--ink)}
+.stack em{font-style:normal;font-size:12px;color:var(--gray);margin-right:6px}
+
+/* ---------- 4 week explorer ---------- */
+.weeks{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin-bottom:4px}
+.weeks .sg{grid-column:span var(--s);font:500 11px var(--mono);color:var(--gray);padding:0 2px 6px;border-bottom:2px solid var(--teal)}
+.weeks .sg.alt{border-color:var(--teal2)}
+.wk{padding:12px 6px;background:var(--bg2);font-size:13px;font-weight:600;text-align:center;transition:all .2s}
+.wk:hover{background:var(--tsoft)}
+.wk.sel{background:var(--teal);color:#fff}
+.wpanel{display:grid;grid-template-columns:1fr 360px;gap:40px;margin-top:28px}
+.wpanel h3{font:700 28px/1.1 var(--disp)}
+.wpanel .wmeta{font:500 12px var(--mono);color:var(--gray);margin:8px 0 20px}
+.topics{display:grid;grid-template-columns:1fr 1fr;gap:0 32px}
+.topics div{padding:11px 0;border-bottom:1px solid var(--line);font-size:16px;display:flex;gap:14px;align-items:baseline}
+.topics div i{font:500 11px var(--mono);color:var(--teal2);font-style:normal}
+.ship{background:var(--tsoft);padding:22px 24px;border-left:4px solid var(--teal)}
+.ship small{font-size:12px;color:var(--gray);display:block}
+.ship b{display:block;font:700 20px/1.2 var(--disp);color:var(--teal);margin:4px 0 16px}
+.ship .rv{font-size:14px;line-height:1.45}
+
+/* ---------- 5 reviews ---------- */
+.rv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--ink)}
+.rv{padding:16px 18px 18px 0;border-right:1px solid var(--line);margin-right:18px}
+.rv:last-child{border-right:0;margin-right:0}
+.rv .no{font:500 12px var(--mono);color:var(--teal2)}
+.rv .ty{font:700 17px/1.2 var(--disp);margin:6px 0 4px}
+.rv .on{font-size:13.5px;color:var(--gray);line-height:1.4}
+.rv.final .no{color:var(--teal)}.rv.final .ty{color:var(--teal)}
+.check-wrap{display:grid;grid-template-columns:1fr 250px;gap:40px;margin-top:24px;align-items:start}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:6px 24px}
+.ck{display:flex;align-items:center;gap:12px;padding:9px 12px;border:1px solid var(--line);text-align:left;font-size:14.5px;transition:all .2s}
+.ck i{width:18px;height:18px;border:2px solid var(--teal);flex:none;display:grid;place-items:center;transition:all .2s}
+.ck.on{background:var(--tsoft);border-color:var(--tsoft2)}
+.ck.on i{background:var(--teal)}
+.ck.on i::after{content:"";width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.meter{text-align:center}
+.meter svg{width:180px;height:180px}
+.meter .pct{font:500 40px var(--disp);fill:var(--teal)}
+.meter p{font-size:13px;color:var(--gray);margin-top:6px;line-height:1.4}
+
+/* ---------- 6 tracks ---------- */
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--line);margin-bottom:26px}
+.tab{padding:12px 22px;font-size:15px;font-weight:600;color:var(--gray);position:relative;transition:color .2s}
+.tab::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:var(--teal);transform:scaleX(0);transition:transform .25s var(--ease)}
+.tab.sel{color:var(--teal)}.tab.sel::after{transform:none}
+.tab:hover{color:var(--ink)}
+.trk{display:grid;grid-template-columns:300px 1fr;gap:48px}
+.trk .big{font:500 64px/1 var(--disp);color:var(--teal)}
+.trk .big small{font-size:18px;color:var(--gray);margin-left:6px;font-family:var(--sans)}
+.trk .ln{font-size:15px;line-height:1.5;color:var(--ink);margin-top:14px}
+.trk .tg{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.trk .tg span{font-size:12.5px;padding:4px 10px;background:var(--tsoft);color:var(--teal);font-weight:600}
+.sprints3{display:grid;gap:4px}
+.s3{display:grid;grid-template-columns:110px 1fr 160px;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.s3 .k{font:500 12px var(--mono);color:var(--gray)}
+.s3 .t{font:700 17px var(--disp)}
+.s3 .t small{display:block;font:400 13.5px var(--sans);color:var(--gray);margin-top:4px}
+.s3 .r{font-size:13px;color:var(--teal2);font-weight:600;text-align:right}
+.lmsbox{border:1px dashed var(--teal2);padding:28px;background:var(--bg2)}
+.lmsbox b{font:700 20px var(--disp);color:var(--teal);display:block;margin-bottom:8px}
+.lmsbox p{font-size:15px;line-height:1.5;color:var(--gray)}
+
+/* ---------- 7 placement ---------- */
+.place{display:grid;grid-template-columns:1fr 70px 1fr 70px 1.1fr;align-items:stretch;gap:0;margin-top:4px}
+.pcol{padding:20px;background:var(--bg2);border-top:4px solid var(--teal)}
+.pcol.b{border-color:var(--teal2)}
+.pcol.out{background:var(--teal);color:#fff;border-color:var(--ink)}
+.pcol h4{font:700 19px/1.2 var(--disp)}
+.pcol p{font-size:14px;line-height:1.5;color:var(--gray);margin-top:8px}
+.pcol.out p{color:rgba(255,255,255,.85)}
+.arrow{display:grid;place-items:center}
+.arrow svg{width:46px}
+.seats{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;margin-top:14px}
+.seats i{aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.22);transition:background .3s,transform .3s}
+.seats i.f{background:#fff;transform:scale(1.05)}
+.sig{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;margin-top:14px}
+.sig i{height:34px;background:var(--tsoft2);position:relative;display:block}
+.sig i::after{content:"";position:absolute;left:0;right:0;bottom:0;height:var(--h);background:var(--teal2);transition:height .8s var(--ease)}
+.dem{display:grid;gap:6px;margin-top:14px}
+.dem div{display:grid;grid-template-columns:52px 1fr;align-items:center;gap:8px;font-size:12px;color:var(--gray)}
+.dem div span{height:10px;background:var(--teal);width:0;transition:width .8s var(--ease)}
+.control{margin-top:22px;display:flex;gap:28px;padding-top:16px;border-top:1px solid var(--line)}
+.control b{font:600 14px var(--sans);color:var(--teal)}
+.control span{font-size:14px;color:var(--ink)}
+
+/* ---------- 8 onboarding ---------- */
+.onb{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+.ob{padding:22px 0 0;border-top:2px solid var(--teal)}
+.ob .no{font:500 12px var(--mono);color:var(--teal2)}
+.ob h4{font:700 20px/1.2 var(--disp);margin:8px 0}
+.ob p{font-size:15px;line-height:1.5;color:var(--gray)}
+.callout{margin-top:32px;display:flex;align-items:center;gap:24px;padding:22px 26px;background:var(--tsoft)}
+.callout .bigd{font:500 44px/1 var(--disp);color:var(--teal);white-space:nowrap}
+.callout p{font-size:16px;line-height:1.45}
+.stc{display:inline-block;margin-left:8px;font-size:12px;font-weight:700;color:var(--warn);background:#FDEEE0;padding:2px 8px;border-radius:6px}
+
+/* ---------- 9 AI fluency ---------- */
+.aif{display:grid;grid-template-columns:420px 1fr;gap:48px;align-items:start}
+.aring{position:relative;width:400px;height:400px;margin-top:-10px}
+.aring svg{position:absolute;inset:0}
+.aring .seg{cursor:pointer;transition:opacity .2s}
+.aring .center{position:absolute;inset:115px;border-radius:50%;display:grid;place-items:center;text-align:center;padding:12px}
+.aring .center b{font:700 18px/1.2 var(--disp);color:var(--teal)}
+.aring .center span{display:block;font-size:12px;color:var(--gray);margin-top:6px}
+.alist{display:grid;gap:0}
+.ai{display:grid;grid-template-columns:32px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);text-align:left;transition:background .2s}
+.ai .ix{font:500 12px var(--mono);color:var(--gray);padding-top:3px}
+.ai h4{font:700 17px var(--disp);transition:color .2s}
+.ai p{font-size:14px;color:var(--gray);line-height:1.45;margin-top:4px;max-height:0;overflow:hidden;transition:max-height .35s var(--ease)}
+.ai .out{font-size:12.5px;color:var(--teal);font-weight:600;margin-top:6px;display:none}
+.ai.sel h4{color:var(--teal)}
+.ai.sel p{max-height:90px}
+.ai.sel .out{display:block}
+
+/* ---------- 10 how you learn ---------- */
+.ratio{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.ratio .big{font:800 88px/0.92 var(--disp);color:var(--teal);letter-spacing:-.04em}
+.ratio .big small{font-size:28px;letter-spacing:0;font-weight:600;color:var(--ink);display:block;margin-top:12px;font-family:var(--disp)}
+.loop{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:24px;border-top:1px solid var(--line)}
+.lp{padding:18px 16px 0 0;position:relative}
+.lp::before{content:"";position:absolute;left:0;top:-1px;height:2px;width:0;background:var(--teal);transition:width .4s var(--ease)}
+.lp.on::before{width:100%}
+.lp b{font:700 18px var(--disp);display:block}
+.lp span{font-size:13.5px;color:var(--gray);line-height:1.45;display:block;margin-top:6px}
+.lp i{font:500 11px var(--mono);font-style:normal;color:var(--teal2)}
+.prin{display:grid;gap:10px}
+.prin div{display:flex;gap:16px;align-items:baseline;font-size:16px;line-height:1.4}
+.prin div b{font-weight:600;color:var(--teal);min-width:140px}
+
+/* ---------- 11 SkillAssist ---------- */
+.lms{display:grid;grid-template-columns:460px 1fr;gap:48px;align-items:center}
+.hub{position:relative;width:440px;height:420px}
+.hub .core{position:absolute;left:50%;top:50%;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;text-align:center;z-index:2}
+.hub .core b{font:800 30px var(--disp)}
+.hub .core span{font-size:11.5px;opacity:.85;display:block;margin-top:2px}
+.hub svg{position:absolute;inset:0}
+.hnode{position:absolute;transform:translate(-50%,-50%);padding:8px 14px;font-size:13.5px;font-weight:600;background:#fff;border:1px solid var(--line);white-space:nowrap;transition:all .2s;z-index:3}
+.hnode.core4{border-color:var(--teal);color:var(--teal)}
+.hnode:hover,.hnode.sel{background:var(--teal);color:#fff;border-color:var(--teal)}
+.lmsinfo h3{font:700 26px/1.15 var(--disp);color:var(--teal);min-height:32px}
+.lmsinfo p{font-size:16px;line-height:1.5;margin-top:10px;min-height:72px}
+.sot{margin-top:24px;padding:20px 22px;border:2px solid var(--teal)}
+.sot b{font:700 18px var(--disp);display:block}
+.sot span{font-size:14.5px;color:var(--gray);line-height:1.45;display:block;margin-top:6px}
+
+/* ---------- 12 pod ---------- */
+.pod{display:grid;grid-template-columns:420px 1fr;gap:48px;align-items:center}
+.podv{position:relative;width:400px;height:400px}
+.podv .table{position:absolute;inset:110px;border-radius:50%;border:2px solid var(--teal);display:grid;place-items:center;text-align:center}
+.podv .table b{font:700 20px var(--disp);color:var(--teal)}
+.podv .table span{font-size:12px;color:var(--gray);display:block}
+.seat{position:absolute;width:64px;height:64px;margin:-32px;border-radius:50%;background:var(--bg2);border:2px solid var(--line);display:grid;place-items:center;font:600 12px var(--sans);text-align:center;line-height:1.1;transition:all .4s var(--ease)}
+.seat.r{background:var(--teal);color:#fff;border-color:var(--teal)}
+.seat.coach{background:#fff;border:2px dashed var(--teal2);color:var(--teal2)}
+.podrules{display:grid;grid-template-columns:1fr 1fr;gap:18px 32px}
+.podrules div b{font:700 16px var(--disp);display:block}
+.podrules div span{font-size:14px;color:var(--gray);line-height:1.45;display:block;margin-top:4px}
+.rot{margin-top:24px;display:flex;align-items:center;gap:14px}
+.rot button{padding:9px 16px;border:1px solid var(--teal);color:var(--teal);font-weight:600;font-size:13.5px;transition:all .2s}
+.rot button:hover{background:var(--teal);color:#fff}
+.rot span{font-size:13px;color:var(--gray)}
+
+/* ---------- 13 day ---------- */
+.day{margin-top:8px}
+.dtrack{position:relative;height:84px;margin:20px 0 10px;user-select:none;touch-action:none;cursor:pointer}
+.dblock{position:absolute;top:22px;height:40px;background:var(--tsoft);border-left:2px solid #fff;transition:background .2s}
+.dblock.brk{background:repeating-linear-gradient(135deg,var(--bg2) 0 6px,#fff 6px 12px)}
+.dblock.on{background:var(--teal)}
+.dblock.brk.on{background:var(--gray)}
+.dhand{position:absolute;top:8px;width:2px;height:68px;background:var(--ink);transform:translateX(-1px);pointer-events:none}
+.dhand::before{content:"";position:absolute;top:-6px;left:-7px;width:16px;height:16px;border-radius:50%;background:var(--ink);border:3px solid #fff;box-shadow:0 0 0 1px var(--ink)}
+.dtick{position:absolute;top:68px;font:500 11px var(--mono);color:var(--gray);transform:translateX(-50%)}
+.dread{display:grid;grid-template-columns:220px 1fr 280px;gap:40px;margin-top:34px;border-top:2px solid var(--ink);padding-top:22px;align-items:start}
+.dread .tm{font:500 56px/1 var(--disp);color:var(--teal)}
+.dread .tm small{display:block;font:500 12px var(--mono);color:var(--gray);margin-top:10px}
+.dread h3{font:700 26px var(--disp)}
+.dread p{font-size:16px;line-height:1.5;color:var(--gray);margin-top:8px}
+.dread .who{font-size:14px;line-height:1.5}
+.dread .who b{display:block;font-size:12px;color:var(--gray);font-weight:500;margin-bottom:4px}
+.play{padding:8px 14px;border:1px solid var(--teal);color:var(--teal);font-weight:600;font-size:13px}
+.play:hover{background:var(--teal);color:#fff}
+
+/* ---------- 14 roles ---------- */
+.roles{display:grid;grid-template-columns:1fr 380px;gap:48px}
+.tier{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center;padding:10px 0;position:relative}
+.tier+.tier::before{content:'';position:absolute;left:150px;top:-8px;width:2px;height:14px;background:var(--tsoft2)}
+.tier .rs{position:relative}
+.tier>span{font:500 11.5px var(--mono);color:var(--gray)}
+.tier .rs{display:flex;gap:8px;flex-wrap:wrap}
+.role{padding:12px 16px;border:1px solid var(--line);font-size:14.5px;font-weight:600;text-align:left;transition:all .2s;background:#fff}
+.role:hover{border-color:var(--teal)}
+.role.sel{background:var(--teal);color:#fff;border-color:var(--teal)}
+.tier.you .role{border:2px solid var(--ink);cursor:default}
+.rinfo{background:var(--bg2);padding:26px;border-top:4px solid var(--teal);min-height:380px}
+.rinfo h3{font:700 22px/1.2 var(--disp);color:var(--teal)}
+.rinfo .lvl{font:500 11.5px var(--mono);color:var(--gray);margin-top:6px}
+.rinfo ul{list-style:none;margin-top:16px;display:grid;gap:9px}
+.rinfo li{font-size:14.5px;line-height:1.45;padding-left:16px;position:relative}
+.rinfo li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:2px;background:var(--teal2)}
+.rinfo .go{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);font-size:14px}
+.rinfo .go b{color:var(--teal)}
+
+/* ---------- 15 governance ---------- */
+.gov{display:grid;grid-template-columns:260px 1fr;gap:40px}
+.cad{display:grid;gap:4px}
+.cd{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:var(--bg2);text-align:left;font-weight:600;font-size:16px;transition:all .2s;border-left:4px solid transparent}
+.cd span{font:500 11px var(--mono);color:var(--gray)}
+.cd:hover{background:var(--tsoft)}
+.cd.sel{background:var(--teal);color:#fff;border-left-color:var(--ink)}.cd.sel span{color:rgba(255,255,255,.75)}
+.gtable{width:100%;border-collapse:collapse}
+.gtable th{font:500 11.5px var(--mono);color:var(--gray);text-align:left;padding:0 12px 10px 0;border-bottom:2px solid var(--ink)}
+.gtable td{padding:13px 12px 13px 0;border-bottom:1px solid var(--line);font-size:14.5px;line-height:1.4;vertical-align:top}
+.gtable td:first-child{font-weight:600;width:30%}
+.gtable td:nth-child(2){color:var(--teal);font-weight:600;width:28%}
+.gnote{margin-top:18px;font-size:14px;color:var(--ink);display:flex;gap:10px;align-items:center}
+.gnote i{width:12px;height:16px;background:var(--yel);border-radius:2px;display:inline-block}
+
+/* ---------- 16 evaluation ---------- */
+.ev{display:grid;grid-template-columns:1fr 470px;gap:44px}
+.comp{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+.comp div{padding:11px 0;border-bottom:1px solid var(--line)}
+.comp b{font:700 15.5px var(--disp);display:block}
+.comp span{font-size:13px;color:var(--gray);line-height:1.4}
+.score{margin-top:22px}
+.score h4{font:700 16px var(--disp);margin-bottom:10px}
+.wrow{display:grid;grid-template-columns:230px 1fr 44px;gap:12px;align-items:center;font-size:13.5px;margin:6px 0}
+.wrow input{accent-color:var(--teal);width:100%}
+.wrow output{font:500 12px var(--mono);color:var(--gray);text-align:right}
+.tx{border:1px solid var(--line);background:#fff}
+.tx .tx-h{background:var(--teal);color:#fff;padding:14px 18px;display:flex;justify-content:space-between;align-items:center}
+.tx .tx-h b{font:700 16px var(--disp)}
+.tx .tx-h span{font:500 11px var(--mono);opacity:.8}
+.tx .row{display:grid;grid-template-columns:150px 1fr;padding:9px 18px;border-bottom:1px solid var(--line);font-size:13.5px;opacity:0;transform:translateX(8px);transition:all .4s var(--ease)}
+.tx .row.in{opacity:1;transform:none}
+.tx .row span:first-child{color:var(--gray)}
+.tx .gauge{padding:16px 18px;display:flex;align-items:center;gap:18px}
+.tx .gauge .gv{font:500 44px/1 var(--disp);color:var(--teal);min-width:90px}
+.tx .gauge .gb{flex:1}
+.tx .gauge .bar{height:10px;background:var(--bg2);position:relative}
+.tx .gauge .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--teal);transition:width .6s var(--ease)}
+.tx .gauge small{font-size:12px;color:var(--gray);display:block;margin-top:6px}
+
+/* ---------- 17 cards ---------- */
+.pf{display:grid;grid-template-columns:1fr 430px;gap:48px;align-items:start}
+.cards{display:flex;gap:22px;align-items:flex-end;height:250px}
+.card{width:150px;height:210px;border-radius:8px;position:relative;transform-style:preserve-3d;transition:transform .6s var(--ease);cursor:pointer;flex:none}
+.card .fc{position:absolute;inset:0;border-radius:8px;backface-visibility:hidden;padding:16px;display:flex;flex-direction:column;justify-content:space-between}
+.card .fr{color:var(--ink)}
+.card .bk{transform:rotateY(180deg);background:#fff;border:2px solid currentColor;font-size:13px;line-height:1.45;color:var(--ink)}
+.card.flip{transform:rotateY(180deg)}
+.card.y .fr{background:var(--yel)} .card.y .bk{border-color:var(--yel)}
+.card.o .fr{background:var(--warn);color:#fff} .card.o .bk{border-color:var(--warn)}
+.card.r .fr{background:var(--crit);color:#fff} .card.r .bk{border-color:var(--crit)}
+.card .fr b{font:800 24px/1 var(--disp)}
+.card .fr span{font-size:13px;font-weight:600}
+.card .fr small{font:500 11px var(--mono);opacity:.8}
+.card.lift{transform:translateY(-18px)}
+.card.flip.lift{transform:translateY(-18px) rotateY(180deg)}
+.sim{border:1px solid var(--line);padding:20px;background:#FFFFFF}
+.sim h4{font:700 17px var(--disp)}
+.sim .phs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin:14px 0}
+.sim .phs div{padding:10px 6px 8px;background:var(--bg2);font-size:11.5px;font-weight:600;text-align:center;min-height:74px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.sim .phs div.cur{background:var(--tsoft);box-shadow:inset 0 -3px 0 var(--teal)}
+.sim .phs .mini{display:flex;gap:3px}
+.sim .phs .mini i{width:12px;height:16px;border-radius:2px;animation:drop .35s var(--ease)}
+@keyframes drop{from{transform:translateY(-10px);opacity:0}}
+.mini i.y{background:var(--yel)}.mini i.o{background:var(--warn)}.mini i.r{background:var(--crit)}
+.sim .btns{display:flex;gap:8px;flex-wrap:wrap}
+.sim .btns button{padding:9px 13px;font-size:13px;font-weight:600;border:1px solid var(--teal);color:var(--teal)}
+.sim .btns button:hover{background:var(--teal);color:#fff}
+.sim .btns button.sr{border-color:var(--crit);color:var(--crit)}.sim .btns button.sr:hover{background:var(--crit);color:#fff}
+.sim .btns button.ghost{border-color:var(--line);color:var(--gray)}
+.sim .status{margin-top:14px;padding:12px 14px;background:var(--bg2);font-size:14px;line-height:1.45;min-height:66px}
+.sim .status b{display:block}
+.carry{margin-top:26px;font-size:14.5px;line-height:1.5;border-left:4px solid var(--teal);padding:4px 0 4px 16px}
+
+/* ---------- 18 incidents ---------- */
+.inc{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.inc h4{font:700 17px var(--disp);display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.inc h4 i{width:12px;height:16px;border-radius:2px;display:inline-block}
+.ilist{display:grid;grid-template-columns:1fr;gap:0}
+.ilist div{padding:8px 0;border-bottom:1px solid var(--line);font-size:14.5px;display:grid;grid-template-columns:28px 1fr;align-items:baseline}
+.ilist div i{font:500 11px var(--mono);color:var(--gray);font-style:normal}
+.srbox{background:#FDF1F1;border-top:4px solid var(--crit);padding:18px 20px}
+.srbox .ilist div{border-color:#F3D6D6}
+.audit{margin-top:20px;padding:18px 20px;border:2px solid var(--ink);position:relative}
+.audit b{font:700 15px var(--disp);display:block;margin-bottom:6px}
+.audit p{font-size:14px;line-height:1.5}
+
+/* ---------- 19 due process ---------- */
+.dp{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;margin-top:16px}
+.dp::before{content:"";position:absolute;left:24px;right:24px;top:23px;height:2px;background:var(--line)}
+.dp .prog{position:absolute;left:24px;top:23px;height:2px;background:var(--teal);transition:width .5s var(--ease);width:0}
+.st{position:relative;padding-right:18px;text-align:left}
+.st .c{width:48px;height:48px;border-radius:50%;background:#fff;border:2px solid var(--line);display:grid;place-items:center;font:600 16px var(--disp);color:var(--gray);transition:all .3s;position:relative;z-index:1}
+.st.on .c{border-color:var(--teal);background:var(--teal);color:#fff}
+.st h4{font:700 16.5px/1.25 var(--disp);margin-top:16px}
+.st .ow{font:500 11.5px var(--mono);color:var(--teal2);margin-top:6px}
+.st p{font-size:13.5px;color:var(--gray);line-height:1.45;margin-top:8px}
+.dpf{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:34px}
+.dpf div{border-top:2px solid var(--teal);padding-top:14px}
+.dpf b{font:500 38px/1 var(--disp);color:var(--teal);display:block}
+.dpf span{font-size:14px;line-height:1.45;display:block;margin-top:8px}
+.dpctl{margin-top:22px;display:flex;gap:10px}
+.dpctl button{padding:8px 14px;border:1px solid var(--teal);color:var(--teal);font-size:13px;font-weight:600}
+.dpctl button:hover{background:var(--teal);color:#fff}
+
+/* ---------- 20 milestones ---------- */
+.ms{position:relative;margin-top:30px;height:200px}
+.ms .line{position:absolute;left:0;right:0;top:40px;height:2px;background:var(--line)}
+.ms .line i{position:absolute;left:0;top:0;bottom:0;background:var(--teal);width:0;transition:width 1.4s var(--ease)}
+.mst{position:absolute;top:0;transform:translateX(-50%);width:150px;text-align:center}
+.mst .mk{width:20px;height:20px;margin:31px auto 0;border-radius:50%;background:#fff;border:2px solid var(--teal);transition:all .3s}
+.mst.g .mk{border-radius:0;transform:rotate(45deg);border-color:var(--teal2)}
+.mst.offer .mk{background:var(--ok);border-color:var(--ok)}
+.mst .lb{font:700 15px/1.2 var(--disp);margin-top:20px}
+.mst .tx2{font-size:12.5px;color:var(--gray);margin-top:6px;line-height:1.4}
+.mst .when{position:absolute;top:0;left:0;right:0;font:500 11px var(--mono);color:var(--teal2)}
+.loi{margin-top:6px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.loi div{padding:18px 20px;background:var(--bg2);font-size:15px;line-height:1.5}
+.loi div b{font:700 17px var(--disp);display:block;margin-bottom:6px;color:var(--teal)}
+.loi div.warn b{color:var(--crit)}
+
+/* ---------- 21 close ---------- */
+.close-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:10px}
+.esc{display:grid;gap:4px}
+.esc div{display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:center;padding:14px 16px;background:rgba(255,255,255,.08)}
+.esc div i{font:500 12px var(--mono);font-style:normal;opacity:.7}
+.esc div b{font:600 16px var(--sans);display:block}
+.esc div span{font-size:13px;opacity:.8}
+.qa h3{font:800 84px/.95 var(--disp);letter-spacing:-.03em}
+.qa p{font-size:18px;line-height:1.5;margin-top:22px;color:rgba(255,255,255,.85);max-width:460px}
+.qa .tag{margin-top:34px;font:700 22px var(--disp)}
+
+
+.cover .facts{position:absolute;right:var(--px);top:16%;display:grid;gap:12px;width:280px;z-index:2}
+.cover .facts div{background:#FFFFFF;color:var(--ink);border-radius:14px;padding:14px 16px;display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center;animation:floaty 6s ease-in-out infinite}
+.cover .facts div:nth-child(2){margin-left:-40px;animation-delay:-2s}.cover .facts div:nth-child(3){animation-delay:-4s}
+.cover .facts b{font:700 22px/1 var(--disp);color:var(--teal);display:block}
+.cover .facts span{font-size:12.5px;color:var(--gray)}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.prin{display:grid!important;grid-template-columns:1fr 1fr;gap:12px!important}
+.prin>div{display:grid!important;grid-template-columns:40px 1fr;gap:12px;align-items:start;background:var(--bg2);border-radius:12px;padding:14px;font-size:14px!important;line-height:1.45}
+.prin>div b{display:block;min-width:0!important;margin-bottom:2px}
+.prin>div:last-child{grid-column:span 2}
+.podrules>div{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start}
+.ob .ibox{width:48px;height:48px;border-radius:14px;margin-bottom:14px}.ob .ibox svg{width:24px;height:24px}
+.ob{background:var(--bg2);border-radius:14px;padding:22px!important;border-top:0!important;position:relative;overflow:hidden}
+.ob::after{content:"";position:absolute;left:0;top:0;right:0;height:4px;background:var(--teal)}
+.sp .ibox{margin-bottom:10px;background:#FFFFFF}
+.cd{border-radius:10px}.cd .ibox{width:32px;height:32px;margin-right:10px}.cd .lab{display:flex;align-items:center}
+.cd.sel .ibox{background:rgba(255,255,255,.15);color:#fff}
+.ai{grid-template-columns:44px 1fr!important}
+.ai.sel .ibox{background:var(--teal);color:#fff}
+.esc div .ibox{background:rgba(255,255,255,.14);color:#fff}
+.esc>div{border-radius:12px;grid-template-columns:44px 1fr!important}
+.radar-wrap{display:grid;grid-template-columns:1fr 190px;gap:20px;align-items:center}
+.radar-wrap svg{width:100%;height:auto;max-height:290px;overflow:visible}
+.radar-wrap .ax{cursor:pointer}
+.radar-wrap .ax text{font:600 11.5px var(--sans);fill:var(--ink);transition:fill .2s}
+.radar-wrap .ax.sel text{fill:var(--teal)}
+.rcap{background:var(--bg2);border-radius:12px;padding:16px}
+.rcap b{font:700 17px var(--disp);color:var(--teal);display:block}
+.rcap span{font-size:14px;color:var(--gray);line-height:1.45;display:block;margin-top:6px}
+.rcap .rv2{font:500 32px var(--disp);color:var(--ink);margin-top:10px}
+.rcap .rv2 small{font:400 12px var(--sans);color:var(--gray);margin-left:6px}
+.pcol,.ship,.lmsbox,.rinfo,.tx,.sim,.srbox,.audit,.loi>div,.callout,.sp,.cd,.role,.ck,.wk,.hnode,.stack span,.trk .tg span,.rot button,.play,.dpctl button,.sim .btns button,.sim .phs div,.sot,.tab{border-radius:10px}
+.tx,.pcol,.sp{overflow:hidden}
+.tabs{border-bottom:0;gap:6px;background:var(--bg2);padding:5px;border-radius:12px;display:inline-flex}
+.tab{padding:9px 18px}.tab::after{display:none}.tab.sel{background:#FFFFFF;color:var(--teal);box-shadow:0 1px 3px rgba(35,31,32,.1)}
+.stats{border:0;gap:12px;grid-template-columns:repeat(4,1fr)}
+.stat{background:var(--bg2);border-radius:14px;border:0!important;padding:18px 20px!important;display:grid;grid-template-columns:1fr auto;align-items:end}
+.stat .ibox{width:44px;height:44px;background:#FFFFFF;grid-row:span 2;align-self:start}
+.stat .num{grid-column:1}.stat .lab{grid-column:1}
+.rv{background:var(--bg2);border-radius:12px;padding:16px!important;margin:0!important;border:0!important}
+.rv-grid{border:0;gap:12px}
+.rv.final{background:var(--teal)}.rv.final .no,.rv.final .ty,.rv.final .on{color:#fff!important}
+.jdetail{background:var(--bg2);border:0;border-radius:14px;padding:24px}
+.lp{background:var(--bg2);border-radius:12px;padding:16px!important;overflow:hidden}
+.loop{border:0;gap:10px}
+.lp::before{top:0!important}
+.comp-hide{display:none}
+
+
+.podrules div span.ibox,.esc div span.ibox,.cover .facts span.ibox,.cd span.ibox{display:grid;margin:0;opacity:1;font:inherit;color:var(--teal)}
+.esc div span.ibox{color:#fff}.cd.sel span.ibox{color:#fff}
+.cd span.lab{font:inherit;color:inherit;display:flex;align-items:center}
+.cover .facts span.ibox{color:var(--teal)}
+
+/* journey timeline v2 */
+.jt{display:flex;align-items:center;margin:28px 0 30px;padding:30px 0 34px}
+.jt .jstart2{flex:none;display:flex;flex-direction:column;align-items:center;gap:8px;width:84px}
+.jt .jstart2 .pin{width:46px;height:46px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:600 11px var(--mono);position:relative}
+.jt .jstart2 .pin::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--ink);opacity:.35;animation:ping 2s infinite}
+@keyframes ping{0%{transform:scale(.85);opacity:.5}100%{transform:scale(1.35);opacity:0}}
+.jt .jstart2 span{font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap}
+.jt .jc{flex:0 0 150px;min-height:188px;background:var(--bg2);border:2px solid transparent;border-radius:16px;padding:16px;text-align:left;display:flex;flex-direction:column;gap:6px;transition:all .25s var(--ease);position:relative;z-index:1}
+.jt .jc:hover{transform:translateY(-3px);border-color:var(--tsoft2)}
+.jt .jc.sel{background:#FFFFFF;border-color:var(--teal);box-shadow:0 8px 22px rgba(0,110,116,.14)}
+.jt .jc .ibox{margin-bottom:4px;background:#FFFFFF}
+.jt .jc.sel .ibox{background:var(--teal);color:#fff}
+.jt .jc small{font:500 11px var(--mono);color:var(--teal2)}
+.jt .jc b{font:700 15.5px/1.2 var(--disp)}
+.jt .jc em{margin-top:auto;font-style:normal;font-size:11.5px;font-weight:600;color:var(--teal);background:var(--tsoft);padding:3px 8px;border-radius:6px;align-self:flex-start}
+.jt .jc.sel em{background:var(--teal);color:#fff}
+.jt .jl{flex:var(--n,1);position:relative;height:3px;background:var(--line);border-radius:2px;display:flex;justify-content:space-evenly;align-items:center;min-width:48px}
+.jt .jl::after{content:"";position:absolute;left:0;top:0;height:100%;width:0;background:var(--teal);border-radius:2px;transition:width .55s var(--ease);transition-delay:var(--d,0s)}
+.jt.go .jl::after{width:100%}
+.jt .jm{position:relative;z-index:2;width:22px;height:22px;display:grid;place-items:center}
+.jt .jm i{width:20px;height:20px;transform:rotate(45deg);background:#FFFFFF;border:3px solid var(--teal2);border-radius:4px;transition:all .25s}
+.jt .jm.offer i{background:var(--ok);border-color:var(--ok)}
+.jt .jm:hover i,.jt .jm.sel i{background:var(--teal2);transform:rotate(45deg) scale(1.15)}
+.jt .jm.offer:hover i,.jt .jm.offer.sel i{background:var(--ok)}
+.jt .jm .t{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-size:12.5px;font-weight:700;color:var(--teal2);white-space:nowrap}
+.jt .jm.offer .t{color:var(--ok)}
+.jt .jm .u{position:absolute;top:28px;left:50%;transform:translateX(-50%);font:500 10.5px var(--mono);color:var(--gray);white-space:nowrap}
+
+/* gates */
+.gate{display:grid;grid-template-columns:380px 1fr;gap:28px;align-items:start}
+.grules{display:grid;gap:12px}
+.gr{display:grid;grid-template-columns:44px 1fr;gap:14px;background:var(--bg2);border-radius:14px;padding:16px 18px;border-left:4px solid var(--teal)}
+.gr.amber{border-left-color:var(--warn)}.gr.amber .ibox{background:#FDEEE0;color:var(--warn)}
+.gr .gbig{font:800 26px/1 var(--disp);color:var(--teal);display:block}
+.gr.amber .gbig{color:var(--warn)}
+.gr h4{font:700 15px var(--disp);margin-top:6px}
+.gr p{font-size:13.5px;color:var(--gray);line-height:1.45;margin-top:4px}
+.gflow{border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+.gh{display:flex;justify-content:space-between;align-items:center;font:700 15px var(--disp);margin-bottom:14px}
+.gchips{display:flex;gap:8px;flex-wrap:wrap}
+.gchip{display:flex;align-items:center;gap:8px;background:var(--tsoft);color:var(--teal);font-size:13px;font-weight:600;padding:6px 12px 6px 6px;border-radius:10px}
+.gchip .ibox{width:28px;height:28px;border-radius:8px;background:#FFFFFF}.gchip .ibox svg{width:16px;height:16px}
+.garrow{height:22px;margin:6px 0 6px 30px;border-left:2px dashed var(--teal2)}
+.gavg{display:grid;grid-template-columns:200px 1fr;gap:18px;align-items:center;background:var(--bg2);border-radius:12px;padding:14px 16px}
+.gavg small{font-size:12px;color:var(--gray);display:block}
+.gavg .gv{font:800 34px/1.1 var(--disp);color:var(--teal);transition:color .2s}
+.gavg input,.gret input{width:100%;accent-color:var(--teal)}
+.gbr{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.gpath{display:grid;grid-template-columns:40px 1fr;gap:12px;border:2px solid var(--line);border-radius:14px;padding:14px;opacity:.45;transition:all .3s var(--ease)}
+.gpath b{font:700 15px var(--disp);display:block}
+.gpath>div>span{font-size:13px;color:var(--gray)}
+.gpath.on{opacity:1}
+.gpass.on{border-color:var(--ok);background:#EEF6EF}.gpass .ibox{background:#DDEEDE;color:var(--ok)}
+.gre.on{border-color:var(--warn);background:#FEF5EC}.gre .ibox{background:#FDEEE0;color:var(--warn)}
+.gret{margin-top:10px;display:none}.gre.on .gret{display:block}
+.gret small{font-size:12px;color:var(--gray)}
+.grres{margin-top:8px;font-size:13px;font-weight:700}
+.gre:not(.on) .grres{display:none}
+.grres.ok{color:var(--ok)}.grres.no{color:var(--crit)}
+
+/* incidents v2 */
+.incg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.ig{background:var(--bg2);border-radius:14px;padding:16px 18px;border-top:4px solid var(--yel)}
+.igh{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:center;margin-bottom:10px}
+.igh b{font:700 15.5px var(--disp);display:block}
+.igh span:not(.ibox){font:500 11px var(--mono);color:#9A7300}
+.igh .ibox{background:#FFF6D9;color:#9A7300}
+.ig ul,.srl{list-style:none;display:grid;gap:0}
+.ig li,.srl li{font-size:13.5px;line-height:1.4;padding:7px 0 7px 16px;border-bottom:1px solid var(--line);position:relative}
+.ig li:last-child,.srl li:last-child{border-bottom:0}
+.ig li::before{content:"";position:absolute;left:0;top:13px;width:7px;height:9px;border-radius:2px;background:var(--yel)}
+.incb{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;margin-top:14px;align-items:stretch}
+.incb .audit{margin-top:0}
+.srl{grid-template-columns:1fr 1fr;column-gap:24px}
+.srl li{border-color:#F3D6D6}
+.srl li::before{content:"";position:absolute;left:0;top:13px;width:7px;height:9px;border-radius:2px;background:var(--crit)}
+.srl li:nth-last-child(2){border-bottom:0}
+
+/* teal sidebar + header logo + fullscreen */
+.side{background:var(--teal);border-right:0}
+.brand{border-bottom:1px solid rgba(255,255,255,.18);color:#fff}
+.brand b{color:#fff}.brand span{color:rgba(255,255,255,.7)}
+.navlist{padding:12px 10px}
+.ni{color:rgba(255,255,255,.85)}
+.ni .ibox{background:rgba(255,255,255,.1);color:rgba(255,255,255,.85)}
+.ni:hover{background:rgba(255,255,255,.1)}
+.ni.cur{background:#FFFFFF;color:var(--teal)}
+.ni.cur .ibox{background:var(--teal);color:#fff}
+.ni .vt{border-color:rgba(255,255,255,.35)}
+.ni.seen .vt{background:#fff;border-color:#fff}
+.ni .cnt{color:rgba(255,255,255,.6)}
+.ngrp{font:600 10.5px var(--mono);letter-spacing:.06em;color:rgba(255,255,255,.55);padding:10px 10px 4px;text-transform:uppercase}
+.nsub{border-left-color:rgba(255,255,255,.25)}
+.nsub button{color:rgba(255,255,255,.75)}
+.nsub button:hover{background:rgba(255,255,255,.1)}
+.nsub button.sel{color:#fff;background:rgba(255,255,255,.16)}
+.sfoot{border-top:1px solid rgba(255,255,255,.18)}
+.sfoot .lbl{color:rgba(255,255,255,.7)}.sfoot .lbl b{color:#fff}
+.sfoot .bar{background:rgba(255,255,255,.18)}.sfoot .bar i{background:#fff}
+.phead .logo{background:#FFFFFF;padding:0 18px 0 0;margin-right:4px;border-right:1px solid var(--line)}
+.phead .logo img{height:40px}
+.fsbtn{display:flex;align-items:center;gap:6px;padding:8px;border-radius:8px;border:0;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;margin-left:12px;opacity:.7}
+.fsbtn:hover{background:var(--bg2);color:var(--ink);opacity:1}
+.fsbtn span:last-child{display:none}
+:fullscreen .app{grid-template-columns:1fr}
+:fullscreen .side{display:none}
+:fullscreen .fsbtn span:last-child{display:inline}
+.fsbtn svg{width:16px;height:16px}
+
+.subwrap{margin-left:auto}
+.cover .facts .start{margin:0;width:100%;text-align:center;border-radius:12px;padding:14px}
+/* setup */
+.setup{display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:16px}
+.sc{background:var(--bg2);border-radius:14px;padding:18px 20px}
+.sc .sch{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:center;margin-bottom:12px}
+.sc .sch b{font:700 16px var(--disp);display:block}.sc .sch span:not(.ibox){font-size:12px;color:var(--gray)}
+.spec{display:grid;gap:0}
+.spec div{display:grid;grid-template-columns:110px 1fr;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13.5px;line-height:1.4}
+.spec div:last-child{border-bottom:0}
+.spec div span:first-child{color:var(--gray)}
+.spec b{font-weight:600}
+.sw{display:flex;flex-wrap:wrap;gap:6px}
+.sw span{background:#FFFFFF;border:1px solid var(--line);border-radius:8px;padding:5px 10px;font-size:12.5px;font-weight:600}
+.sw span small{display:block;font-weight:400;color:var(--gray);font-size:11px}
+.setup .checks{grid-template-columns:1fr;margin-top:10px}
+.setup .ck{background:#FFFFFF}
+.setnote{margin-top:16px;display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:center;background:var(--tsoft);border-radius:12px;padding:12px 16px;font-size:14px}
+.setnote .ibox{background:#FFFFFF;color:var(--teal)}
+/* evaluation how */
+.evflow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;align-items:stretch;margin-bottom:18px;position:relative}
+.evflow::before{content:"";position:absolute;left:10%;right:10%;top:34px;height:2px;background:var(--tsoft2)}
+.ef{text-align:center;padding:0 10px;position:relative}
+.ef .ibox{width:68px;height:68px;border-radius:50%;margin:0 auto 12px;background:#FFFFFF;border:2px solid var(--teal);color:var(--teal)}
+.ef .ibox svg{width:28px;height:28px}
+.ef.on .ibox{background:var(--teal);color:#fff}
+.ef b{font:700 15px/1.2 var(--disp);display:block}
+.ef span{font-size:12.5px;color:var(--gray);display:block;margin-top:4px;line-height:1.4}
+.evg{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.evcards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.evc{background:var(--bg2);border-radius:14px;padding:16px 18px;display:grid;grid-template-columns:40px 1fr;gap:12px}
+.evc b{font:700 15px var(--disp);display:block}
+.evc p{font-size:13.5px;color:var(--gray);line-height:1.45;margin-top:4px}
+.calc{border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.calc h4{font:700 15px var(--disp);display:flex;justify-content:space-between;align-items:center}
+.calc .crow{display:grid;grid-template-columns:70px 1fr 42px 60px;gap:10px;align-items:center;font-size:13px;margin-top:10px}
+.calc .crow input{accent-color:var(--teal);width:100%}
+.calc .crow output{font:500 12px var(--mono);text-align:right}
+.calc .crow .wt{font:500 11.5px var(--mono);color:var(--gray);text-align:right}
+.calc .eq{margin-top:12px;font:500 12px var(--mono);color:var(--gray);background:var(--bg2);border-radius:8px;padding:8px 10px}
+.calc .res{margin-top:12px;display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center}
+.calc .res b{font:800 40px/1 var(--disp)}
+.calc .res .bar{height:10px;background:var(--bg2);border-radius:5px;position:relative;overflow:hidden}
+.calc .res .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--teal);transition:width .4s var(--ease)}
+.calc .res .bar::after{content:"";position:absolute;left:70%;top:-2px;bottom:-2px;width:2px;background:var(--ink)}
+.calc .res small{display:block;font-size:12.5px;margin-top:6px;font-weight:700}
+.mailrow{background:#FFFFFF!important;color:var(--ink)}
+.mailrow .ibox{background:var(--tsoft)!important;color:var(--teal)!important}
+.mailrow b{color:var(--teal)}
+.mailrow span{color:var(--gray)!important;opacity:1!important}
+.mailrow .em{display:block!important;font:600 15px var(--mono);color:var(--ink)!important;margin:2px 0}
+
+.txg{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.txg .radar-wrap svg{max-height:270px}
+.drs{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line);background:var(--bg2)}
+.drs>b{font:800 46px/1 var(--disp);color:var(--teal)}
+.tierbar{position:relative;height:26px;border-radius:8px;overflow:hidden;display:block;background:var(--line)}
+.tierbar i{position:absolute;left:var(--l);width:var(--w);top:0;bottom:0;font:600 10.5px var(--sans);font-style:normal;display:grid;place-items:center;color:#fff;white-space:nowrap;overflow:hidden}
+.tierbar .t1{background:#B9BFC6}.tierbar .t2{background:var(--warn)}.tierbar .t3{background:var(--ok)}
+.tierbar em{position:absolute;top:-3px;bottom:-3px;width:3px;background:var(--ink);left:0;transition:left 1s var(--ease);border-radius:2px}
+.drs small{display:block;font-size:11.5px;color:var(--gray);margin-top:6px;line-height:1.4}
+.txnote{margin-top:12px;display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:center;background:var(--bg2);border-radius:12px;padding:12px 16px}
+.txnote b{font:700 14px var(--disp);display:block}.txnote span:not(.ibox){font-size:13px;color:var(--gray);line-height:1.4}
+.tx .row{grid-template-columns:170px 1fr;font-size:13px}
+
+/* sample transcript mock */
+.tsg{display:grid;grid-template-columns:1fr 300px;gap:20px;align-items:start}
+.mock{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#FFFFFF;font-size:14px}
+.mkp{cursor:pointer;transition:box-shadow .2s,background .2s;position:relative}
+.mkp:hover{background:var(--bg2)}
+.mkp.sel{box-shadow:inset 0 0 0 2px var(--teal2);border-radius:10px;background:var(--tsoft)}
+.mk-head{display:flex;justify-content:space-between;align-items:center;background:var(--teal);color:#fff;padding:12px 16px}
+.mk-head b{font:700 14px var(--disp);display:block}.mk-head span{font-size:11.5px;opacity:.8}
+.mk-head.sel{background:var(--teal)!important;box-shadow:inset 0 0 0 2px #fff;border-radius:0}
+.mk-band{background:rgba(255,255,255,.18);border-radius:999px;padding:4px 12px;font-weight:600;opacity:1!important}
+.mk-tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.mk-tiles div{background:var(--bg2);border-radius:8px;padding:8px 10px}
+.mk-tiles span{display:block;font-weight:600;font-size:13px;margin-bottom:6px;color:var(--ink)}
+.mock i{display:block;height:7px;border-radius:4px;background:var(--tsoft2);position:relative;overflow:hidden}
+.mock i::after{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--w);background:var(--teal2);border-radius:4px}
+.mock i.rec::after{background:var(--teal)}
+.mk-cols{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.mk-cols>*{border-bottom:1px solid var(--line)}
+.mk-cols>*:first-child{border-right:1px solid var(--line)}
+.mk-box{padding:12px 14px}
+.mk-box h5{font:700 15px var(--disp);color:var(--teal);margin-bottom:8px}
+.mk-bars div{display:grid;grid-template-columns:170px 1fr;gap:10px;align-items:center;margin:2px 0}
+.mk-bars span{font-size:13px;white-space:nowrap}.mk-bars em{font-style:normal;color:var(--teal);font-weight:700;font-size:10.5px;margin-left:4px}
+.mk-chips{display:flex;gap:6px;flex-wrap:wrap}
+.mk-chips span{border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-weight:600;display:flex;align-items:center;gap:6px}
+.mk-chips span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--tsoft2)}
+.mk-journey{display:flex;align-items:center;justify-content:space-between;padding:6px 10px}
+.mk-journey i,.mk-journey b{width:18px;height:18px;border-radius:50%;background:var(--teal2);flex:none;position:relative}
+.mk-journey{position:relative}
+.mk-journey::before{content:"";position:absolute;left:20px;right:20px;top:14px;height:2px;background:var(--tsoft2)}
+.mk-journey i,.mk-journey b{z-index:1}
+.mk-journey b{background:var(--teal);width:22px;height:22px}
+.sk{height:8px;border-radius:4px;background:var(--line);width:var(--w);margin:6px 0}
+.mk-link{font:500 11.5px var(--mono);color:var(--teal2)}
+.tsinfo{background:var(--bg2);border-radius:14px;padding:18px 20px;min-height:200px}
+.tsinfo h4{font:700 17px var(--disp);color:var(--teal)}
+.tsinfo p{font-size:14px;line-height:1.5;color:var(--ink);margin-top:8px}
+.tsinfo .pm{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:13px;color:var(--gray)}
+.tsinfo .pm b{color:var(--teal)}
+
+/* strips removed: floating dock + in-slide logo */
+.main{position:relative}
+.stage{padding:20px 22px 92px!important}
+.dock{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:16px;padding:6px;box-shadow:0 8px 28px rgba(35,31,32,.14);z-index:40;max-width:calc(100% - 32px);backdrop-filter:blur(6px)}
+.dock .nb{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;border:1px solid var(--line);color:var(--teal);flex:none;transition:all .2s;padding:0;max-width:none}
+.dock .nb>span:not([data-ic]){display:none}
+.dock .nb:hover{background:var(--tsoft);border-color:var(--teal)}
+.dock .nb.nx{background:var(--teal);color:#fff;border-color:var(--teal)}
+.dock .nb.nx:hover{background:#005A5F}
+.dock .nb[disabled]{opacity:.3;pointer-events:none}
+.dock .crumb{font:700 13.5px var(--disp);color:var(--ink);padding:0 8px;white-space:nowrap}
+.dock .subwrap{margin:0;gap:8px}
+.dock .subwrap.none{display:none}
+.dock .subtabs{padding:3px;gap:3px}
+.dock .subtabs button{padding:7px 12px;font-size:13px;white-space:nowrap}
+.dock .sublbl{padding:5px 9px;font-size:11.5px}
+.dock .fsbtn{margin:0;width:40px;height:40px;display:grid;place-items:center;padding:0;border-radius:11px}
+.dock .fsbtn span:last-child{display:inline}
+.slogo{position:absolute;top:30px;right:36px;z-index:5;background:transparent;line-height:0}
+.slogo img{height:42px;width:auto;display:block}
+.deep .slogo img{filter:brightness(0) invert(1)}
+.slide .head{padding-right:96px}
+.slide.seen>.slogo,.slide>.slogo{opacity:1!important;transform:none!important}
+/* cover v3 */
+.cover{height:auto!important;min-height:100%}
+.cover.active{padding:48px 64px 22px!important}
+.cover .cv-out{margin-top:28px}
+.cv-top{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;position:relative;z-index:2}
+.cv-eyebrow{font-size:15px;color:rgba(255,255,255,.8);margin-bottom:22px;display:flex;align-items:center;gap:12px}
+.cv-eyebrow::before{content:"";width:44px;height:2px;background:#fff}
+.cover .cv-h{font:800 clamp(52px,5.4vw,88px)/.95 var(--disp);letter-spacing:-.035em}
+.cv-h .l{display:block;overflow:hidden;padding-bottom:4px}
+.cv-h .l span{display:block;transform:translateY(105%);transition:transform .9s var(--ease)}
+.cover.seen .cv-h .l span{transform:none}
+.cover.seen .cv-h .l:nth-child(2) span{transition-delay:.15s}
+.cv-gama{display:inline-grid;grid-template-columns:44px auto;gap:12px;align-items:center;margin-top:28px;padding:10px 18px 10px 10px;border-radius:14px;background:#FFFFFF;color:var(--ink)}
+.cv-gama .ibox{background:var(--tsoft);color:var(--teal)}
+.cv-gama b{font:700 14.5px var(--disp);display:block;color:var(--teal)}
+.cv-gama span:not(.ibox){font-size:12px;color:var(--gray)}
+.cv-lede{font-size:18px;line-height:1.5;color:rgba(255,255,255,.88);max-width:560px;margin-top:24px}
+.jcons{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);border-radius:18px;overflow:hidden;font:500 13.5px/1.7 var(--mono);color:#FFFFFF;backdrop-filter:blur(6px);position:relative}
+.jc-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.16)}
+.jc-bar i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.3)}
+.jc-bar span{margin-left:10px;font-size:12px;color:rgba(255,255,255,.7)}
+.jc-body{padding:14px 20px 34px;-webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)}
+.jc-body .ln{white-space:pre;filter:blur(2.6px);opacity:.4;transition:filter .6s var(--ease),opacity .6s var(--ease)}
+.jc-body .ln.on{filter:none;opacity:1}
+.jc-body .ln.soft{filter:blur(1.4px);opacity:.7}
+.jcons:hover .ln{filter:none;opacity:1}
+.jc-body .p{color:rgba(255,255,255,.6)}
+.jc-body .ok{color:#FFFFFF;opacity:.85}
+.jc-body .h{font-weight:700}
+.jc-hint{position:absolute;left:0;right:0;bottom:10px;text-align:center;font:600 11.5px var(--sans);color:rgba(255,255,255,.75);letter-spacing:.02em}
+
+.cv-out{position:relative;z-index:2}
+.cv-out h3{font:600 13px var(--sans);color:rgba(255,255,255,.75);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.cv-out h3::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.2)}
+.cv-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.cv-tiles div{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:14px 16px;opacity:0;transform:translateY(10px);transition:all .5s var(--ease)}
+.cv-tiles div.in{opacity:1;transform:none}
+.cv-tiles .ibox{width:44px;height:44px;background:#FFFFFF;color:var(--teal)}
+.cv-tiles b{font:700 15px/1.25 var(--disp);color:#fff;display:block}
+.cv-tiles span:not(.ibox){font-size:12.5px;color:rgba(255,255,255,.7);display:block;margin-top:2px}
+:fullscreen .stage{padding-bottom:92px!important}
+
+/* fill + GAMA footer */
+.slide.active{display:flex!important;flex-direction:column}
+.slide.active>.head+*{margin-top:auto}
+.slide.active>.gama{margin-top:auto}
+.slide.active>.src+.gama,.slide.active>.gama{padding-top:18px}
+.gama{display:flex;justify-content:space-between;align-items:center;gap:16px;border-top:1px solid var(--line);margin-top:24px;padding-top:14px;font-size:12px;color:var(--gray)}
+.gama b{color:var(--teal);font-weight:700}
+.gama .gm{display:flex;align-items:center;gap:8px}
+.gama .gm i{width:8px;height:8px;border-radius:2px;background:var(--teal);display:inline-block}
+.deep .gama{border-top-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7)}
+.deep .gama b{color:#fff}.deep .gama .gm i{background:#fff}
+.slide.active>.head{flex:none}
+.slide{padding-bottom:22px!important}
+.cover .cv-top{margin-top:auto}
+
+.cover .cv-top{padding-top:56px}
+/* ===== legibility pass: larger type ===== */
+h2.title{font-size:42px;line-height:1.1}
+.sub{font-size:20px;line-height:1.45}
+.kick{font-size:15px}
+.src{font-size:13px}
+.gama{font-size:15px}
+.gr p,.evc p,.ob p,.podrules div span:not(.ibox),.prin>div,.lp span,.ig li,.srl li,.spec div,.tx .row,.gtable td,.rinfo li,.jdetail li,.topics div,.ck,.ai p,.lmsinfo p,.dread p,.st p,.dpf span,.loi div,.mst .tx2,.trk .ln,.s3 .t small,.pcol p,.rv .on,.ef span,.rcap span,.tsinfo p,.audit p,.carry,.sim .status,.dread .who,.sot span,.callout p,.control span,.sw span,.gpath>div>span,.gavg small,.cv-tiles span:not(.ibox){font-size:16.5px!important;line-height:1.45}
+.gr h4,.evc b,.ob h4,.podrules b,.lp b,.igh b,.ai h4,.st h4,.sc .sch b,.pcol h4,.rv .ty,.s3 .t,.ef b,.gpath b,.calc h4,.gh,.mst .lb,.loi div b,.inc h4,.srbox h4,.cv-tiles b{font-size:19px!important}
+.gtable th,.ob .no,.rv .no,.sp .w,.lp i,.s3 .k,.st .ow,.mst .when,.jt .jc small,.igh span:not(.ibox){font-size:13px!important}
+.sp .t{font-size:20px}.sp .o{font-size:15px}
+.stat .num{font-size:60px}.stat .lab{font-size:16px}
+.wk{font-size:15px}.tab{font-size:16px}.cd{font-size:18px}.role{font-size:16px}
+.jt .jc b{font-size:17px}.jt .jc em{font-size:13px}.jt .jm .t{font-size:14px}.jt .jm .u{font-size:12px}
+.jdetail h3,.wpanel h3,.lmsinfo h3,.rinfo h3,.dread h3,.tsinfo h4{font-size:28px}
+.hint{font-size:13.5px}
+.cover .cv-lede{font-size:21px}.cv-eyebrow{font-size:17px}
+.jc-body{font-size:15px}
+.esc div b{font-size:18px}.esc div span{font-size:15px}
+.qa p{font-size:20px}.qa .tag{font-size:24px}
+.stack span{font-size:14px}.trk .tg span{font-size:14px}
+.gama .gm b,.gama>b{color:var(--teal)}
+
+.sgrp{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font:700 12.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--teal);background:var(--tsoft);padding:6px 12px;border-radius:8px;margin-bottom:14px;flex:none}
+.sgrp::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--teal)}
+.deep .sgrp{background:rgba(255,255,255,.14);color:#fff}.deep .sgrp::before{background:#fff}
+.cover .sgrp{position:relative;z-index:2}
+
+@media (max-width:1100px){
+ .app{grid-template-columns:76px 1fr}.brand>div:last-child,.ni>span:not(.ibox),.sfoot{display:none}.brand{padding:14px}.logo img{height:36px}.ni{grid-template-columns:34px}
+ .cv-top,.gate,.gbr,.incg,.incb,.setup,.evg,.evflow,.txg,.tsg,.jdetail,.wpanel,.check-wrap,.trk,.place,.onb,.aif,.ratio,.lms,.pod,.dread,.roles,.gov,.ev,.pf,.inc,.close-grid,.loi,.dpf,.radar-wrap{grid-template-columns:1fr!important}
+ .stats,.rv-grid,.loop,.podrules,.jdetail ul,.topics,.checks{grid-template-columns:1fr 1fr!important}
+ .cover .facts{display:none}.cover .wrap{right:var(--px)}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+  <div class="brand"><div class="logo" style="display:none"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQgAAAElBAMAAADq6mEkAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAPUExURQAAACQgICIeICMfICMfIJj2NbcAAAAEdFJOUwBAf78wcCB+AAAACXBIWXMAADLAAAAywAEoZFrbAAAEmElEQVR42u2cbXbiMAxFk7QLIJQFhMACaMICmtj7X9NMS6Gx/CVBZE5n3vvZ2MpFkh0knFZVGdXtYTxba8dhvyl0Sw9htAsN3dMRvjCIN0ZHQ8iEo3cxw9vZ+nKd4V4zAQh3xCxmsEH1JSEiDK4hZYgog2NJFyLBYO2+DERjk+qKQBzTEHZTAOItw3AzpghR5xhuAVGE2OUhZm0IhiOsPSlDvHIgjDLEmQNxyQo1iIbFcLGnBpHbI67aaEIwGeyHIgQzGpdbakGw1oY2BDclvpaHFgSXQXN1sFNiowjxwmR4rxQhAnlphr7vx6A1JQgvL813rVAfln/VfZRTCPNT7izSZapUIejTa1nsNEdKpgRBGCbnYvONeAqP1oIgtWdDTOlA5CY1LtlzID4Td1FaF4GYvAGNc6snQVRvy/XypHC4KgJhMsOLQNhMl0oHgu4Ts2S0FkTGFUoQ9NmRnqYE4T3K51QPVQnCr8hNIiJKEKGvd0PUGQUhrO0jGEoQseZEGEMJIt4YCGFoQSR6Rb03WAsiVXh4C0ULIt2xIr8maEFkKuK5KwKRKwT1v9Rk4+FSqEHkOxRdAYh8d6BElz/rirkARN4VBbr8jL6Vfpef4QqjD8FwhXaXn0Wh3eXnBeSkD5GnMAUgePumNkSWYioBUR3SEJoN9oX6bDwKQNy6dWF9yCEmOUMmJHMpiJ8GajApshDNKhBVtY1ibGiRogcRxziVhIhhfFAIv0Z7pTMe0jawUCYK4TcR1oUI7aAT/dspN+lhCH+5zrRw9UOepXzYF4ZC+GuUzFjh3FzjQdBfzHIzZBDhzgxNTq9kpDehkKKDjE34SbPLQdCkoAEUOeIcdpznfVq3kqRo0pfT2kUeui85CJL+1BHisiPkCj8PKYTx7NwLcYwl0at3x3PqPt5FwV71EsU+ehB+m62PjbaSvaq+fgDvLCt17xz8aX0gZhbibxPH6JydDxHsLQ1924+hC2yG5cftole+NDFPp4XyJS3Hi8v2aR3MM97JMCEEOQU57yMXro5iHBZ0oFlZ6c00/b5tt4fY8Wn2YSTLz0v22aJPBRMlM16YlVnNfg4xxq/siItRflJwoyFJs2+j3ONIfAi+xZtR9k7B3yXE0eCHkP/gEMTjuuq53uN/tRMsj1uIeetj3WauZ5S3X0m+aLNd8WOUlZort1EvWn6P4ySSrOJgumKZ6wxXrN7ApI7gLBBx/ceh6GRT5M0RRkBm2RRR0cOlMBvZlLuK8UwvN2Q0FRD5K2iMGHeyKXcypDvKEece12aoqi0/H5LgZi+5K1WklTtuRFPGR9/vDHwyk/Et6XeO7YMIf1X37lOa49r6WgCacbW3XLdXDpHNul39Ldu6Xd8mBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBP2jakaRhsfvGIKwIt1zJBIQgAAEIAABCEAAAhCAAAQgng9Rta7ISzozubzCOycMrfDvqwABiN8A0YdUGiK43wACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgXAVPrpWGuEOAAAQgAAEIQAACEIAABCAAAQhAAAIQ/yPEH1HFjNQXsRF7AAAAAElFTkSuQmCC" alt="UST"></div><div><b>UST Elevate</b><span>Learner orientation 2026</span></div></div>
+  <nav class="navlist" id="navlist" aria-label="Sections"></nav>
+  <div class="sfoot"><div class="lbl">Explored <b id="scount">0 of 14</b></div><div class="bar"><i id="sbar"></i></div></div>
+</aside>
+<div class="main">
+  <main class="stage" id="stage">
+<!-- 1 COVER -->
+<section class="slide deep cover" data-sec="Welcome" data-title="Welcome to UST Elevate" data-min="0.5" data-init="cover">
+  <div class="ring"></div><div class="ring r2"></div><div class="ring r3"></div>
+  <div class="cv-top">
+    <div>
+      <div class="cv-eyebrow">G A Menon Academy</div>
+      <h1 class="cv-h"><span class="l"><span>Welcome to</span></span><span class="l"><span>UST Elevate</span></span></h1>
+      <p class="cv-lede">Over the coming weeks you go from campus graduate to an engineer ready for UST client projects. You learn by building, in pods, reviewed by industry experts.</p>
+    </div>
+    <div class="jcons" aria-label="A glimpse of your journey">
+      <div class="jc-bar"><i></i><i></i><i></i><span>elevate --journey</span></div>
+      <div class="jc-body" id="term"></div>
+      <div class="jc-hint">A glimpse of what is ahead</div>
+    </div>
+  </div>
+  <div class="cv-out">
+    <h3>What you walk away with</h3>
+    <div class="cv-tiles" id="cvt">
+      <div><span class="ibox" data-ic="code"></span><p><b>A full-stack app you built</b><span>Python, Flask, SQL and web UI</span></p></div>
+      <div><span class="ibox" data-ic="award"></span><p><b>Claude Certified Developer</b><span>An industry AI credential</span></p></div>
+      <div><span class="ibox" data-ic="file"></span><p><b>A transcript that speaks for you</b><span>Evidence project managers read</span></p></div>
+      <div><span class="ibox" data-ic="briefcase"></span><p><b>A path to a client project</b><span>Matched to your track and role fit</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 JOURNEY -->
+<section class="slide" data-sec="Your journey" data-title="Your journey in four phases" data-min="1.5" data-init="journey">
+  <div class="head">
+    <div class="kick">Your journey</div>
+    <h2 class="title">Four phases take you from your LOI to your first client project</h2>
+    <p class="sub">Two gates check your progress. Clear both and your offer letter follows. Click any step to see what happens there.</p>
+  </div>
+  <div class="jt" id="jmap"></div>
+  <div class="jdetail" id="jdet"></div>
+</section>
+
+<!-- 3 FOUNDATION -->
+<section class="slide" data-sec="Phase 1, Foundation" data-title="Foundation at a glance" data-min="1.5" data-init="found">
+  <div class="head">
+    <div class="kick">Phase 1, Foundation (Python)</div>
+    <h2 class="title">In ten weeks you build a working full-stack app, one sprint at a time</h2>
+    <p class="sub">Everyone starts here. Each sprint ends with something you have built and an expert review of it.</p>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="num" data-count="10">0</div><div class="lab">weeks</div><span class="ibox" data-ic="calendar"></span></div>
+    <div class="stat"><div class="num" data-count="4">0</div><div class="lab">sprints</div><span class="ibox" data-ic="refresh"></span></div>
+    <div class="stat"><div class="num" data-count="4">0</div><div class="lab">external reviews with viva</div><span class="ibox" data-ic="eye"></span></div>
+    <div class="stat"><div class="num" data-count="2">0</div><div class="lab">connected apps in your final build</div><span class="ibox" data-ic="plug"></span></div>
+  </div>
+  <div class="sprintbar">
+    <button class="sp" style="--w:3" data-go="4" data-wk="1"><div><span class="ibox" data-ic="terminal"></span><div class="w">Sprint 1, weeks 1 to 3</div><div class="t">Foundation and Python</div></div><div class="o"><small>You ship</small>Python CLI application</div></button>
+    <button class="sp" style="--w:2" data-go="4" data-wk="4"><div><span class="ibox" data-ic="database"></span><div class="w">Sprint 2, weeks 4 to 5</div><div class="t">Flask API and database</div></div><div class="o"><small>You ship</small>REST API with MySQL</div></button>
+    <button class="sp" style="--w:3" data-go="4" data-wk="6"><div><span class="ibox" data-ic="layout"></span><div class="w">Sprint 3, weeks 6 to 8</div><div class="t">HTML, CSS, Bootstrap 5, JavaScript</div></div><div class="o"><small>You ship</small>Dynamic front-end pages</div></button>
+    <button class="sp" style="--w:2" data-go="4" data-wk="9"><div><span class="ibox" data-ic="plug"></span><div class="w">Sprint 4, weeks 9 to 10</div><div class="t">Flask client and integration</div></div><div class="o"><small>You ship</small>Full-stack application</div></button>
+  </div>
+  <div class="stack"><em>Your toolkit</em><span>Python 3.11+</span><span>Flask 3.x</span><span>SQLAlchemy</span><span>MySQL 8.x</span><span>Jinja2</span><span>HTML5</span><span>CSS3</span><span>Bootstrap 5</span><span>JavaScript ES6+</span><span>pytest</span><span>Git and GitHub</span><span>Postman</span><span>VS Code</span></div>
+  <div class="src">Source: UST Elevate Python Full-Stack Pre-Onboarding curriculum, 4 sprints, 10 weeks.</div>
+</section>
+
+<!-- 4 WEEK EXPLORER -->
+<section class="slide" data-sec="Phase 1, Foundation" data-title="Week by week" data-min="2" data-init="weeks">
+  <div class="head">
+    <div class="kick">Phase 1, week by week</div>
+    <h2 class="title">Every week has a clear focus, and every sprint ships something real</h2>
+  </div>
+  <div class="weeks">
+    <div class="sg" style="--s:3">Sprint 1</div><div class="sg alt" style="--s:2">Sprint 2</div><div class="sg" style="--s:3">Sprint 3</div><div class="sg alt" style="--s:2">Sprint 4</div>
+  </div>
+  <div class="weeks" id="wkbtns"></div>
+  <div class="wpanel" id="wkpanel"></div>
+  <div class="src">Use the number keys 1 to 9 and 0 to jump between weeks. Source: UST Elevate Python Full-Stack Pre-Onboarding curriculum.</div>
+</section>
+
+<!-- 5 REVIEWS -->
+<section class="slide" data-sec="Phase 1, Foundation" data-title="External reviews" data-min="1" data-init="reviews">
+  <div class="head">
+    <div class="kick">Phase 1, external reviews</div>
+    <h2 class="title">Experts review what you built at the end of every sprint</h2>
+    <p class="sub">You show working code, answer questions in a viva and explain your choices. All four review scores count towards Gate 1.</p>
+  </div>
+  <div class="rv-grid">
+    <div class="rv"><div class="no">Review 1</div><div class="ty">Viva and coding</div><div class="on">Python CLI application</div></div>
+    <div class="rv"><div class="no">Review 2</div><div class="ty">Viva and project</div><div class="on">Flask REST API with MySQL</div></div>
+    <div class="rv"><div class="no">Review 3</div><div class="ty">Viva and project</div><div class="on">HTML, CSS, Bootstrap and JavaScript pages</div></div>
+    <div class="rv final"><div class="no">Review 4, final</div><div class="ty">Demo, viva and code review</div><div class="on">Full-stack Flask application</div></div>
+  </div>
+  <div class="check-wrap">
+    <div>
+      <p class="hint" style="margin-bottom:12px">Your final app must show all ten. Click to tick them off.</p>
+      <div class="checks" id="checks"></div>
+    </div>
+    <div class="meter">
+      <svg viewBox="0 0 180 180"><circle cx="90" cy="90" r="76" fill="none" stroke="#E1E6E8" stroke-width="14"/><circle id="mring" cx="90" cy="90" r="76" fill="none" stroke="#006E74" stroke-width="14" stroke-dasharray="477.5" stroke-dashoffset="477.5" transform="rotate(-90 90 90)" style="transition:stroke-dashoffset .5s"/><text x="90" y="104" text-anchor="middle" class="pct" id="mpct">0%</text></svg>
+      <p id="mtxt">Final app readiness</p>
+    </div>
+  </div>
+  <div class="src">Source: UST Elevate Python Full-Stack Pre-Onboarding curriculum, final application and external assessment.</div>
+</section>
+
+
+<!-- GATE gate1 -->
+<section class="slide" id="gate1" data-sec="Phase 1, Foundation" data-title="Phase 1, Gate 1" data-init="gate">
+  <div class="head">
+    <div class="kick">Phase 1, Gate 1</div>
+    <h2 class="title">Score 70% or more to clear Gate 1 and move to Specialisation</h2>
+    <p class="sub">Your Gate 1 score is the weighted average of all four sprint review evaluations. External experts evaluate every review.</p>
+  </div>
+  <div class="gate">
+    <div class="grules">
+      <div class="gr"><span class="ibox" data-ic="target"></span><div><b class="gbig">70%</b><h4>Pass mark</h4><p>Weighted average of all 4 sprint review evaluation scores: Sprint 1 at 30%, Sprint 2 at 20%, Sprint 3 at 30%, Sprint 4 at 20%.</p></div></div>
+      <div class="gr amber"><span class="ibox" data-ic="refresh"></span><div><b class="gbig">1 retest</b><h4>Below 70%</h4><p>You complete a 5th sprint and need 75% or more in its sprint review evaluation.</p></div></div>
+      <div class="gr"><span class="ibox" data-ic="users"></span><div><b class="gbig">External</b><h4>Expert evaluation</h4><p>Every sprint review evaluation is done by external experts.</p></div></div>
+    </div>
+    <div class="gflow">
+      <div class="gh"><span>How your gate result works</span><span class="hint">Move the sliders</span></div>
+      <div class="gchips"><span class="gchip"><span class="ibox" data-ic="eye"></span>Sprint 1 review <em style="font-style:normal;background:#FFFFFF;border-radius:6px;padding:1px 6px;font-size:11.5px">30%</em></span><span class="gchip"><span class="ibox" data-ic="eye"></span>Sprint 2 review <em style="font-style:normal;background:#FFFFFF;border-radius:6px;padding:1px 6px;font-size:11.5px">20%</em></span><span class="gchip"><span class="ibox" data-ic="eye"></span>Sprint 3 review <em style="font-style:normal;background:#FFFFFF;border-radius:6px;padding:1px 6px;font-size:11.5px">30%</em></span><span class="gchip"><span class="ibox" data-ic="eye"></span>Sprint 4 review <em style="font-style:normal;background:#FFFFFF;border-radius:6px;padding:1px 6px;font-size:11.5px">20%</em></span></div>
+      <div class="garrow"></div>
+      <div class="gavg"><div><small>Your weighted average</small><b class="gv">74%</b></div><input type="range" class="gin" min="40" max="100" value="74" aria-label="Weighted average"></div>
+      <div class="gbr">
+        <div class="gpath gpass"><span class="ibox" data-ic="check"></span><div><b>70% or more</b><span>Gate cleared</span></div></div>
+        <div class="gpath gre"><span class="ibox" data-ic="refresh"></span><div><b>Below 70%</b><span>Retest: a 5th sprint</span>
+          <div class="gret"><small>Retest sprint review score <b class="grv">78%</b></small><input type="range" class="grin" min="40" max="100" value="78" aria-label="Retest score"></div>
+          <div class="grres"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 TRACKS -->
+<section class="slide" data-sec="Phase 2, Specialisation" data-title="Specialisation tracks" data-min="1.5" data-init="tracks">
+  <div class="head">
+    <div class="kick">Phase 2, Specialisation</div>
+    <h2 class="title">Your specialisation follows what UST clients need right now</h2>
+    <p class="sub">Tracks open based on business demand. These are sample tracks. Each one ends with Gate 2, the final review.</p>
+  </div>
+  <div class="tabs" id="ttabs"></div>
+  <div id="tbody"></div>
+  <div class="src">Source: UST Elevate Java and .NET Full-Stack programme sheets; 2026 Campus Graduates Training Plan. Durations for tracks marked on SkillAssist are confirmed there.</div>
+</section>
+
+<!-- 7 PLACEMENT -->
+<section class="slide" data-sec="Phase 2, Specialisation" data-title="How track placement works" data-min="1" data-init="place">
+  <div class="head">
+    <div class="kick">Phase 2, track placement</div>
+    <h2 class="title">Your Foundation work shows your fit, and client demand sets the seats</h2>
+    <p class="sub">Placement happens at Gate 1, after the Sprint 4 review. The best fit for each seat is placed first.</p>
+  </div>
+  <div class="place">
+    <div class="pcol"><h4>Client demand</h4><p>Each track gets the number of seats the business needs.</p>
+      <div class="dem" id="dem"><div>Track A<span style="--v:90%"></span></div><div>Track B<span style="--v:70%"></span></div><div>Track C<span style="--v:45%"></span></div><div>Track D<span style="--v:30%"></span></div></div>
+    </div>
+    <div class="arrow"><svg viewBox="0 0 46 20"><path d="M0 10h40M32 3l8 7-8 7" fill="none" stroke="#006E74" stroke-width="2"/></svg></div>
+    <div class="pcol b"><h4>Your evidence</h4><p>Mentors rate you on eight signals through Foundation. Your sprint reviews count too.</p>
+      <div class="sig" id="sig"><i style="--v:70%"></i><i style="--v:90%"></i><i style="--v:55%"></i><i style="--v:80%"></i><i style="--v:65%"></i><i style="--v:95%"></i><i style="--v:60%"></i><i style="--v:75%"></i></div>
+    </div>
+    <div class="arrow"><svg viewBox="0 0 46 20"><path d="M0 10h40M32 3l8 7-8 7" fill="none" stroke="#006E74" stroke-width="2"/></svg></div>
+    <div class="pcol out"><h4>Your track</h4><p>Seats fill best fit first. You start your specialisation two working days after Sprint 4.</p>
+      <div class="seats" id="seats"></div>
+    </div>
+  </div>
+  <div class="control"><b>What you control</b><span>Show up every day.</span><span>Ship every sprint.</span><span>Own your reviews.</span><span>Help your pod win.</span></div>
+  <div class="src">Bars are illustrative. Source: 2026 Campus Graduates Training Plan, placement into tracks.</div>
+</section>
+
+
+<!-- GATE gate2 -->
+<section class="slide" id="gate2" data-sec="Phase 2, Specialisation" data-title="Phase 2, Gate 2" data-init="gate">
+  <div class="head">
+    <div class="kick">Phase 2, Gate 2</div>
+    <h2 class="title">Score 70% or more to clear Gate 2 and receive your offer letter</h2>
+    <p class="sub">Your Gate 2 score is the weighted average of all sprint review evaluations in your track. The number of sprints depends on your specialisation. External experts evaluate every review.</p>
+  </div>
+  <div class="gate">
+    <div class="grules">
+      <div class="gr"><span class="ibox" data-ic="target"></span><div><b class="gbig">70%</b><h4>Pass mark</h4><p>Weighted average of all sprint review evaluation scores.</p></div></div>
+      <div class="gr amber"><span class="ibox" data-ic="refresh"></span><div><b class="gbig">1 retest</b><h4>Below 70%</h4><p>You complete an additional sprint and need 75% or more in its sprint review evaluation.</p></div></div>
+      <div class="gr"><span class="ibox" data-ic="users"></span><div><b class="gbig">External</b><h4>Expert evaluation</h4><p>Every sprint review evaluation is done by external experts.</p></div></div>
+    </div>
+    <div class="gflow">
+      <div class="gh"><span>How your gate result works</span><span class="hint">Move the sliders</span></div>
+      <div class="gchips"><span class="gchip"><span class="ibox" data-ic="eye"></span>Sprint 1 review</span><span class="gchip"><span class="ibox" data-ic="eye"></span>Sprint 2 review</span><span class="gchip"><span class="ibox" data-ic="eye"></span>Final sprint review</span></div>
+      <div class="garrow"></div>
+      <div class="gavg"><div><small>Your weighted average</small><b class="gv">74%</b></div><input type="range" class="gin" min="40" max="100" value="74" aria-label="Weighted average"></div>
+      <div class="gbr">
+        <div class="gpath gpass"><span class="ibox" data-ic="check"></span><div><b>70% or more</b><span>Gate cleared</span></div></div>
+        <div class="gpath gre"><span class="ibox" data-ic="refresh"></span><div><b>Below 70%</b><span>Retest: an additional sprint</span>
+          <div class="gret"><small>Retest sprint review score <b class="grv">78%</b></small><input type="range" class="grin" min="40" max="100" value="78" aria-label="Retest score"></div>
+          <div class="grres"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 ONBOARDING -->
+<section class="slide" data-sec="Phase 3, Onboarding" data-title="Onboarding" data-min="1" data-init="none">
+  <div class="head">
+    <div class="kick">Phase 3, Onboarding</div>
+    <h2 class="title">Onboarding makes you a UST employee and gets you ready for a project</h2>
+    <p class="sub">It starts once you clear Gate 2 and receive your offer letter.</p>
+  </div>
+  <div class="onb">
+    <div class="ob"><span class="ibox" data-ic="file"></span><div class="no">Step 1</div><h4>Offer letter</h4><p>Issued after you clear pre-onboarding, which is Foundation plus Specialisation.</p></div>
+    <div class="ob"><span class="ibox" data-ic="calendar"></span><div class="no">Step 2</div><h4>Joining</h4><p>You join UST on the first working Monday after Gate 2.</p></div>
+    <div class="ob"><span class="ibox" data-ic="rocket"></span><div class="no">Step 3</div><h4>Onboarding programme</h4><p>Joining formalities, UST systems and induction.</p></div>
+  </div>
+  <div class="callout"><div class="bigd">Day 1</div><p>Your first working Monday after Gate 2 is your joining day. <span class="stc">Subject to change</span></p></div>
+  <div class="src">Source: 2026 Campus Graduates Training Plan, dates and joining.</div>
+</section>
+
+<!-- 9 AI FLUENCY -->
+<section class="slide" data-sec="Phase 4, AI Fluency" data-title="AI Fluency and Professional Excellence" data-min="1" data-init="aif">
+  <div class="head">
+    <div class="kick">Phase 4, AI Fluency &amp; Professional Excellence</div>
+    <h2 class="title">You leave as an engineer who builds with AI and works like a professional</h2>
+  </div>
+  <div class="aif">
+    <div class="aring" id="aring"><svg viewBox="0 0 400 400" id="asvg"></svg><div class="center" id="acenter"></div></div>
+    <div class="alist" id="alist"></div>
+  </div>
+  <div class="src">Certification details: Anthropic, Claude Certified Developer, Foundations (CCDV-F). Exam access and funding details are shared on SkillAssist.</div>
+</section>
+
+
+<!-- SETUP -->
+<section class="slide" id="setup" data-sec="Getting ready" data-title="Get set up" data-init="setup">
+  <div class="head">
+    <div class="kick">Getting ready</div>
+    <h2 class="title">You train on your own laptop and internet, so get set up before Day 1</h2>
+    <p class="sub">Everything below is needed from the first day of Foundation. Tick off the checklist as you go.</p>
+  </div>
+  <div class="setup">
+    <div class="sc">
+      <div class="sch"><span class="ibox" data-ic="laptop"></span><div><b>Your laptop</b><span>Minimum, with the recommended level in brackets</span></div></div>
+      <div class="spec">
+        <div><span>Operating system</span><b>Windows 10 or 11, 64-bit, or macOS 12 or later</b></div>
+        <div><span>Processor</span><b>Intel Core i5 or AMD Ryzen 5, 8th generation or newer, or Apple M1 or newer</b></div>
+        <div><span>Memory</span><b>8 GB RAM (16 GB recommended)</b></div>
+        <div><span>Storage</span><b>256 GB SSD with at least 40 GB free</b></div>
+        <div><span>Camera and audio</span><b>Working webcam, microphone and headset</b></div>
+        <div><span>Access</span><b>Administrator rights to install software</b></div>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="sch"><span class="ibox" data-ic="wifi"></span><div><b>Internet and workspace</b><span>Sessions, reviews and the daily scrum are all online</span></div></div>
+      <div class="spec">
+        <div><span>Speed</span><b>20 Mbps download and 5 Mbps upload, stable</b></div>
+        <div><span>Connection</span><b>Wired or a strong Wi-Fi signal; a mobile hotspot as backup</b></div>
+        <div><span>Power</span><b>Charger at hand and a plan for power cuts during reviews</b></div>
+        <div><span>Workspace</span><b>A quiet place where you can be on camera</b></div>
+        <div><span>Browser</span><b>Google Chrome or Microsoft Edge, latest version</b></div>
+      </div>
+      <div class="setnote"><span class="ibox" data-ic="alert"></span><div><b>This is your responsibility.</b> UST does not provide laptops, internet or support for personal devices. Make sure everything here is in place before Day 1.</div></div>
+    </div>
+    <div class="sc">
+      <div class="sch"><span class="ibox" data-ic="download"></span><div><b>Software and accounts</b><span>Install before Day 1. Track tools come later.</span></div></div>
+      <div class="sw">
+        <span>Python 3.11+<small>language runtime</small></span><span>VS Code<small>editor</small></span><span>Git<small>version control</small></span><span>MySQL 8 Community<small>database server</small></span><span>MySQL Workbench<small>database client</small></span><span>Postman<small>API testing</small></span>
+      </div>
+      <div class="checks" id="setchecks"></div>
+      <div class="meter" style="display:flex;align-items:center;gap:12px;margin-top:10px;text-align:left"><div class="bar" style="flex:1;height:8px;background:#FFFFFF;border-radius:4px;overflow:hidden"><i id="setbar" style="display:block;height:100%;width:0;background:var(--teal);transition:width .4s"></i></div><b id="settxt" style="font:700 13px var(--disp);color:var(--teal)">0 of 6 ready</b></div>
+    </div>
+  </div>
+  <div class="src">Java, .NET, Node and other track tools are installed when your track starts, with instructions from your Master Trainer.</div>
+</section>
+
+<!-- 10 HOW YOU LEARN -->
+<section class="slide" data-sec="How you learn" data-title="How you learn" data-min="1" data-init="loop">
+  <div class="head">
+    <div class="kick">How you learn</div>
+    <h2 class="title">You learn by building, not by sitting through lectures</h2>
+    <p class="sub">Training runs online, in sprints, inside your pod. It works the way a real software team works.</p>
+  </div>
+  <div class="ratio">
+    <div class="big">Build.<br>Review.<br>Improve.<small>Repeat every sprint.</small></div>
+    <div class="prin">
+      <div><span class="ibox" data-ic="hammer"></span><p><b>Learn by doing</b>You code from day one. Theory comes with practice.</p></div>
+      <div><span class="ibox" data-ic="refresh"></span><p><b>Sprints</b>Fixed cycles, clear goals, a review at the end.</p></div>
+      <div><span class="ibox" data-ic="users"></span><p><b>Pods</b>You build with 4 to 5 teammates, like a delivery team.</p></div>
+      <div><span class="ibox" data-ic="monitor"></span><p><b>Online</b>Virtual classrooms, labs and reviews, all online.</p></div>
+      <div><span class="ibox" data-ic="check"></span><p><b>Proof, not attendance</b>Every sprint ends with a deliverable that is reviewed.</p></div>
+    </div>
+  </div>
+  <div class="loop" id="loop">
+    <div class="lp"><i>Step 1</i><b>Plan</b><span>Sprint goal and tasks set with your pod.</span></div>
+    <div class="lp"><i>Step 2</i><b>Learn</b><span>SkillAssist content and Master Classes.</span></div>
+    <div class="lp"><i>Step 3</i><b>Build</b><span>Code, test, commit every day.</span></div>
+    <div class="lp"><i>Step 4</i><b>Review</b><span>Expert review and viva.</span></div>
+    <div class="lp"><i>Step 5</i><b>Improve</b><span>Retro, feedback, next sprint.</span></div>
+  </div>
+</section>
+
+<!-- 11 SkillAssist -->
+<section class="slide" data-sec="How you learn" data-title="Techademy SkillAssist" data-min="1.5" data-init="lms">
+  <div class="head">
+    <div class="kick">How you learn, Techademy SkillAssist</div>
+    <h2 class="title">Techademy SkillAssist is your single source of truth for the whole programme</h2>
+    <p class="sub">If it is not on SkillAssist, it is not official. Check it every day.</p>
+  </div>
+  <div class="lms">
+    <div class="hub" id="hub"><svg viewBox="0 0 440 420" id="hubsvg"></svg><div class="core"><div><b style="font-size:21px">SkillAssist</b><span>Techademy LMS</span></div></div></div>
+    <div class="lmsinfo">
+      <h3 id="lmst"></h3>
+      <p id="lmsp"></p>
+      <div class="sot"><b>One rule</b><span>Schedules, submissions, scores and announcements live on SkillAssist. A message on any other channel does not replace it.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 POD -->
+<section class="slide" data-sec="How you learn" data-title="Your pod" data-min="1" data-init="pod">
+  <div class="head">
+    <div class="kick">How you learn, your pod</div>
+    <h2 class="title">Your pod of 5 to 6 works like a real delivery team</h2>
+    <p class="sub">You plan together, build together and are reviewed together. Your pod stays the same through Foundation.</p>
+  </div>
+  <div class="pod">
+    <div class="podv" id="podv"><div class="table"><div><b>Your pod</b><span>5 to 6 learners</span></div></div></div>
+    <div>
+      <div class="podrules">
+        <div><span class="ibox" data-ic="target"></span><p><b>Shared goal</b><span>Each sprint the pod ships a deliverable. Everyone contributes, everyone is visible.</span></p></div>
+        <div><span class="ibox" data-ic="clock"></span><p><b>Daily scrum</b><span>Run by the TPM. Yesterday, today, blockers. Fifteen minutes.</span></p></div>
+        <div><span class="ibox" data-ic="eye"></span><p><b>Peer review</b><span>You review each other's code before it goes to the experts.</span></p></div>
+        <div><span class="ibox" data-ic="refresh"></span><p><b>Rotating roles</b><span>Sprint lead, code reviewer and demo lead rotate so everyone leads.</span></p></div>
+        <div><span class="ibox" data-ic="users"></span><p><b>Pod Coach</b><span>Owns your pod's people side: mentoring, conduct, first help.</span></p></div>
+        <div><span class="ibox" data-ic="alert"></span><p><b>Raise it early</b><span>Blocked for more than a day? Tell your Pod Coach.</span></p></div>
+      </div>
+      <div class="rot"><button id="rotbtn">Rotate roles for next sprint</button><span id="rotlab">Sprint 1 roles</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 DAY IN THE LIFE -->
+<section class="slide" data-sec="How you learn" data-title="A day in the life" data-min="1" data-init="day">
+  <div class="head">
+    <div class="kick">How you learn, a day in the life</div>
+    <h2 class="title">A typical day mixes learning, building and pod time</h2>
+    <p class="sub">Drag along the day or press play. Timings are indicative. Your batch schedule is on SkillAssist.</p>
+  </div>
+  <div class="day">
+    <div style="display:flex;justify-content:flex-end"><button class="play" id="dplay">Play the day</button></div>
+    <div class="dtrack" id="dtrack"><div class="dhand" id="dhand"></div></div>
+    <div class="dread" id="dread"></div>
+  </div>
+</section>
+
+<!-- 14 ROLES -->
+<section class="slide" data-sec="Your support team" data-title="Your support team" data-min="1.5" data-init="roles">
+  <div class="head">
+    <div class="kick">Your support team</div>
+    <h2 class="title">Seven roles back you, and each one has a clear job</h2>
+    <p class="sub">Click a role to see what they own and when to go to them.</p>
+  </div>
+  <div class="roles">
+    <div id="tiers"></div>
+    <div class="rinfo" id="rinfo"></div>
+  </div>
+</section>
+
+<!-- 15 GOVERNANCE -->
+<section class="slide" data-sec="Ways of working" data-title="Ways of working" data-min="1.5" data-init="gov">
+  <div class="head">
+    <div class="kick">Ways of working</div>
+    <h2 class="title">A clear rhythm keeps every pod on track and every decision fair</h2>
+    <p class="sub">These are our ways of working. Anything that breaks them counts as Non-Adherence.</p>
+  </div>
+  <div class="gov">
+    <div class="cad" id="cad"></div>
+    <div><table class="gtable"><thead><tr><th>What happens</th><th>Who runs it</th><th>What you do</th></tr></thead><tbody id="gbody"></tbody></table>
+    <div class="gnote"><i></i>Missing any of these without approval starts the Play Fair card process.</div></div>
+  </div>
+</section>
+
+
+<!-- EVAL HOW -->
+<section class="slide" id="evaluation" data-sec="Evaluation" data-title="How evaluation works" data-init="evhow">
+  <div class="head">
+    <div class="kick">Evaluation, how it works</div>
+    <h2 class="title">Your pod is reviewed together, and you are scored individually</h2>
+    <p class="sub">Every sprint ends with a sprint review evaluation by HackerEarth panels. Your gate score is the weighted average of those evaluations.</p>
+  </div>
+  <div class="evflow" id="evflow">
+    <div class="ef"><span class="ibox" data-ic="refresh"></span><b>Sprint ends</b><span>Your pod submits its deliverable on SkillAssist</span></div>
+    <div class="ef"><span class="ibox" data-ic="users"></span><b>Pod review</b><span>Your pod presents the deliverable together</span></div>
+    <div class="ef"><span class="ibox" data-ic="eye"></span><b>Panel evaluates</b><span>HackerEarth panels of external experts run the viva and code review</span></div>
+    <div class="ef"><span class="ibox" data-ic="target"></span><b>Individual score</b><span>You are scored against pre-defined rubrics, not as a pod</span></div>
+    <div class="ef"><span class="ibox" data-ic="flag"></span><b>Gate score</b><span>Weighted average of all sprint evaluations</span></div>
+  </div>
+  <div class="evg">
+    <div class="evcards">
+      <div class="evc"><span class="ibox" data-ic="calendar"></span><div><b>When</b><p>At the end of every sprint. Gate 1 is computed after Sprint 4 and Gate 2 at the end of your track.</p></div></div>
+      <div class="evc"><span class="ibox" data-ic="users"></span><div><b>Who</b><p>HackerEarth panels of external experts. Your trainers do not score you.</p></div></div>
+      <div class="evc"><span class="ibox" data-ic="file"></span><div><b>Against what</b><p>Pre-defined rubrics with clear scoring bands, the same for every learner. Your pod presents together, but each learner gets an individual score.</p></div></div>
+      <div class="evc"><span class="ibox" data-ic="check"></span><div><b>Pass criteria</b><p>70% weighted average clears the gate. Below 70%, one retest: an extra sprint with 75% or more in its evaluation.</p></div></div>
+    </div>
+    <div class="calc" id="calc">
+      <h4>Gate score calculator <span class="hint">Move your sprint scores</span></h4>
+      <div id="crows"></div>
+      <div class="eq">Gate 1 score = (30% × Sprint 1) + (20% × Sprint 2) + (30% × Sprint 3) + (20% × Sprint 4)</div>
+      <div class="res"><b id="cres">0</b><div><div class="bar"><i id="cbar"></i></div><small id="cmsg"></small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 TRANSCRIPT -->
+<section class="slide" id="transcript" data-sec="Evaluation" data-title="Your transcript" data-min="1" data-init="eval">
+  <div class="head">
+    <div class="kick">Evaluation, your transcript</div>
+    <h2 class="title">Your transcript is a live record of how ready you are to join a project</h2>
+    <p class="sub">It builds sprint by sprint from your evaluations, your engineering work and your attendance, and it goes with you into UST.</p>
+  </div>
+  <div class="txg">
+    <div class="tx" id="tx">
+      <div class="tx-h"><b>Deployment Readiness Score</b><span>Illustration</span></div>
+      <div class="drs"><span class="ibox" data-ic="target" style="width:56px;height:56px;border-radius:16px"></span><div><div class="tierbar"><i style="--l:0;--w:40%" class="t1">Not deployable</i><i style="--l:40%;--w:28%" class="t2">With supervision</i><i style="--l:68%;--w:32%" class="t3">Ready to deploy</i><em id="drsmark"></em></div><small>One score from the four components below, placing you in one of three bands.</small></div></div>
+      <div class="row"><span>Engineering Execution Score</span><span>Ownership, workflow, code reviews and delivery. The largest component.</span></div>
+      <div class="row"><span>Learnability Index</span><span>How fast you learn and apply, scored each sprint</span></div>
+      <div class="row"><span>App Review Score</span><span>HackerEarth panel score from each sprint review</span></div>
+      <div class="row"><span>Attendance</span><span>Your attendance across the programme</span></div>
+      <div class="row"><span>Skill Profile</span><span>Eight skills, rated against defined bands</span></div>
+      <div class="row"><span>Role Fit</span><span>Your fit for each role, with a recommendation</span></div>
+      <div class="row"><span>Risk and Support</span><span>Technical, communication and independence</span></div>
+      <div class="row"><span>Learning journey</span><span>Sprint-by-sprint progress, your story, your GitHub</span></div>
+    </div>
+    <div>
+      <div class="radar-wrap"><svg id="radar" viewBox="-235 -145 470 290"></svg><div class="rcap" id="rcap"></div></div>
+      <div class="txnote"><span class="ibox" data-ic="eye"></span><div><b>The skill profile is the rubric</b><span>Each skill has clear scoring bands, so you always know what good looks like. Click a skill to see what it measures.</span></div></div>
+    </div>
+  </div>
+  <div class="src">The radar shape is an illustration, not a score.</div>
+</section>
+
+
+<!-- TRANSCRIPT SAMPLE -->
+<section class="slide" id="transcript-sample" data-sec="Evaluation" data-title="Sample transcript" data-init="tsample">
+  <div class="head">
+    <div class="kick">Evaluation, sample transcript</div>
+    <h2 class="title">This is what your transcript looks like</h2>
+    <p class="sub">A layout preview with no scores. Click any part of it to see what it tells a project manager about you.</p>
+  </div>
+  <div class="tsg">
+    <div class="mock" id="mock">
+      <div class="mk-head mkp" data-k="head"><div><b>Graduate Transcript</b><span>Your name · Track · Pod · Batch</span></div><span class="mk-band">Readiness band</span></div>
+      <div class="mk-tiles mkp" data-k="tiles">
+        <div><span>Deployment Readiness</span><i style="--w:72%"></i></div>
+        <div><span>Engineering Execution</span><i style="--w:66%"></i></div>
+        <div><span>Learnability Index</span><i style="--w:60%"></i></div>
+        <div><span>App Review Score</span><i style="--w:70%"></i></div>
+        <div><span>Attendance</span><i style="--w:90%"></i></div>
+      </div>
+      <div class="mk-cols">
+        <div class="mk-box mkp" data-k="skills"><h5>Skill Profile</h5><div class="mk-bars">
+          <div><span>Foundation Programming</span><i style="--w:70%"></i></div><div><span>Backend Development</span><i style="--w:80%"></i></div><div><span>API Design</span><i style="--w:65%"></i></div><div><span>Database</span><i style="--w:72%"></i></div><div><span>Frontend</span><i style="--w:78%"></i></div><div><span>Testing</span><i style="--w:60%"></i></div><div><span>Debugging</span><i style="--w:68%"></i></div><div><span>Dev Workflow</span><i style="--w:74%"></i></div></div></div>
+        <div>
+          <div class="mk-box mkp" data-k="rolefit"><h5>Role Fit</h5><div class="mk-bars">
+            <div><span style="color:var(--teal);font-weight:700">Fullstack Developer</span><i style="--w:82%" class="rec"></i></div><div><span>Backend Developer</span><i style="--w:76%"></i></div><div><span>Frontend Developer</span><i style="--w:70%"></i></div><div><span>QA Automation</span><i style="--w:62%"></i></div><div><span>Production Support</span><i style="--w:66%"></i></div></div></div>
+          <div class="mk-box mkp" data-k="risk"><h5>Risk and Support</h5><div class="mk-chips"><span>Technical</span><span>Communication</span><span>Independence</span></div></div>
+        </div>
+      </div>
+      <div class="mk-box mkp" data-k="journey"><h5>Learning journey</h5><div class="mk-journey"><i></i><i></i><i></i><i></i><b></b></div></div>
+      <div class="mk-cols">
+        <div class="mk-box mkp" data-k="story"><h5>Your story</h5><p class="sk" style="--w:100%"></p><p class="sk" style="--w:92%"></p><p class="sk" style="--w:70%"></p></div>
+        <div class="mk-box mkp" data-k="git"><h5>Your work</h5><p class="mk-link">github.com/… your sprint branches</p></div>
+      </div>
+    </div>
+    <div class="tsinfo" id="tsinfo"></div>
+  </div>
+  <div class="src">Bar lengths are placeholders for layout only.</div>
+</section>
+
+<!-- 17 PLAY FAIR CARDS -->
+<section class="slide" data-sec="Play Fair" data-title="Play Fair: three cards" data-min="1.5" data-init="cards">
+  <div class="head">
+    <div class="kick">Play Fair, the Non-Adherence protocol</div>
+    <h2 class="title">Three cards. One game. Play fair.</h2>
+    <p class="sub">Break the ways of working and you get a card. Every card is recorded against your name. Click a card to flip it.</p>
+  </div>
+  <div class="pf">
+    <div>
+      <div class="cards">
+        <div class="card y" tabindex="0"><div class="fc fr"><small>First instance</small><div><b>Yellow</b><br><span>Heads-Up</span></div><small>Verbal warning</small></div><div class="fc bk"><b>Heads-Up</b>A verbal warning. It is still written up and logged on your record. Treat it as your one reset.</div></div>
+        <div class="card o" tabindex="0"><div class="fc fr"><small>Second instance</small><div><b>Orange</b><br><span>Final Call</span></div><small>Written warning</small></div><div class="fc bk"><b>Final Call</b>A formal written warning on file. One more incident and you are out.</div></div>
+        <div class="card r" tabindex="0"><div class="fc fr"><small>Third instance</small><div><b>Red</b><br><span>Off the Pitch</span></div><small>LOI cancelled</small></div><div class="fc bk"><b>Off the Pitch</b>Your Letter of Intent is cancelled and you leave the programme.</div></div>
+        <div class="card r" tabindex="0" style="outline:3px solid #231F20;outline-offset:3px"><div class="fc fr"><small>Severe misconduct</small><div><b>Straight Red</b><br><span>Instant Off the Pitch</span></div><small>No warnings first</small></div><div class="fc bk"><b>Straight Red</b>Serious incidents skip Yellow and Orange. LOI cancelled after due process.</div></div>
+      </div>
+      <div class="carry"><b>Cards carry forward.</b> They do not reset between Foundation, Specialisation, Onboarding and AI Fluency. A Yellow in Foundation plus one incident in Specialisation means Orange.</div>
+    </div>
+    <div class="sim">
+      <h4>Try it: how cards add up</h4>
+      <div class="phs" id="simph"></div>
+      <div class="btns"><button id="simadd">Log an incident</button><button id="simnext" class="ghost">Next phase</button><button id="simsr" class="sr">Straight Red</button><button id="simrst" class="ghost">Reset</button></div>
+      <div class="status" id="simst"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 18 INCIDENTS -->
+<section class="slide" data-sec="Play Fair" data-title="What counts as Non-Adherence" data-min="1" data-init="none">
+  <div class="head">
+    <div class="kick">Play Fair, what counts</div>
+    <h2 class="title">Know what earns a card so you never get one</h2>
+  </div>
+  <div class="incg">
+    <div class="ig"><div class="igh"><span class="ibox" data-ic="monitor"></span><div><b>Sessions and attendance</b><span>Card path</span></div></div>
+      <ul><li>Not on camera during a video call</li><li>Unexcused absence or late login beyond the allowed limit</li><li>Leaving a session early without approval</li><li>Skipping the daily scrum, reviews or pod ceremonies</li><li>Missing a Master Class without approval</li></ul></div>
+    <div class="ig"><div class="igh"><span class="ibox" data-ic="code"></span><div><b>Competency building</b><span>Card path</span></div></div>
+      <ul><li>Missed sprint deliverables or deadlines</li><li>Not completing mandatory eLearning or assignments on SkillAssist</li><li>Plagiarism or copied code</li><li>Undeclared AI use in assessments</li><li>Not contributing to your pod's deliverable</li><li>Skipping the daily update in SkillAssist</li><li>Missing your EOD status update to the Pod Coach</li></ul></div>
+    <div class="ig"><div class="igh"><span class="ibox" data-ic="briefcase"></span><div><b>Generic conduct</b><span>Card path</span></div></div>
+      <ul><li>Disrespectful or unprofessional behaviour</li><li>Ignoring communication from the programme team</li><li>Not following instructions from your Pod Coach, TPM or Master Trainer</li><li>Misusing chat or collaboration channels</li><li>Using unapproved tools or software for training work</li></ul></div>
+  </div>
+  <div class="incb">
+    <div class="srbox">
+      <h4><i style="background:var(--crit)"></i>Straight Red: LOI cancelled after due process</h4>
+      <ul class="srl"><li>Impersonation or proxy attendance in any assessment</li><li>Cheating or malpractice in a review or viva</li><li>Harassment, discrimination or abusive conduct</li><li>Breach of UST data, security or IT policy</li><li>Leaking assessment or confidential content</li><li>Misrepresentation or fraudulent documents</li></ul>
+    </div>
+    <div class="audit"><b>This list is not complete</b><p>These are examples. Any act or omission that breaks the ways of working, the code of conduct or UST policy is Non-Adherence, whether or not it is listed here. The Manager, Operations and Governance decides how it is classified.</p></div>
+  </div>
+  <div class="src">Allowed limits, such as late-login minutes, are published on SkillAssist.</div>
+</section>
+
+<!-- 19 DUE PROCESS -->
+<section class="slide" data-sec="Play Fair" data-title="Fair process" data-min="1" data-init="dp">
+  <div class="head">
+    <div class="kick">Play Fair, due process</div>
+    <h2 class="title">Before any Red Card, you always get to tell your side</h2>
+    <p class="sub">A Red Card ends your LOI, so it goes through five recorded steps and two levels of review.</p>
+  </div>
+  <div class="dp" id="dp">
+    <div class="prog" id="dpprog"></div>
+    <div class="st"><div class="c">1</div><h4>Incident logged</h4><div class="ow">Pod Coach or Master Trainer</div><p>Logged with evidence, the same day.</p></div>
+    <div class="st"><div class="c">2</div><h4>You respond</h4><div class="ow">Manager, Ops and Governance</div><p>You get 2 working days to give your side.</p></div>
+    <div class="st"><div class="c">3</div><h4>Recommendation</h4><div class="ow">Manager, Ops and Governance</div><p>Reviews the evidence and your response.</p></div>
+    <div class="st"><div class="c">4</div><h4>Approval</h4><div class="ow">Program Manager</div><p>A second level checks the decision.</p></div>
+    <div class="st"><div class="c">5</div><h4>Record closed</h4><div class="ow">Program Lead</div><p>Outcome filed and archived.</p></div>
+  </div>
+  <div class="dpctl"><button id="dpback">Back</button><button id="dpfwd">Next step</button></div>
+  <div class="dpf">
+    <div><b>2 days</b><span>Working days you get to respond, from the day you are notified.</span></div>
+    <div><b>2 levels</b><span>Recommended by one leader and approved by another. No single person decides.</span></div>
+    <div><b>Keep going</b><span>You continue training while the review runs. No penalty before a decision.</span></div>
+  </div>
+</section>
+
+<!-- 20 MILESTONES -->
+<section class="slide" data-sec="Milestones" data-title="Your offer letter and milestones" data-min="1" data-init="ms">
+  <div class="head">
+    <div class="kick">Your milestones</div>
+    <h2 class="title">Clear both gates and your offer letter follows</h2>
+    <p class="sub">You hold a Letter of Intent today. The offer letter is issued only after you complete pre-onboarding successfully.</p>
+  </div>
+  <div class="ms" id="ms"><div class="line"><i id="msline"></i></div></div>
+  <div class="loi">
+    <div><b>How you earn the offer</b>Clear Gate 1 at the end of Foundation and Gate 2 at the end of Specialisation. Your offer letter is then issued and you join UST.</div>
+    <div class="warn"><b>What stops it</b>Any Red Card, cumulative or Straight, cancels your LOI. Cards carry forward across every phase.</div>
+  </div>
+  <div class="src">Source: 2026 Campus Graduates Training Plan. Batch dates are published on SkillAssist.</div>
+</section>
+
+<!-- 21 CLOSE -->
+<section class="slide deep" data-sec="Support" data-title="Support and Q&amp;A" data-min="1" data-init="none">
+  <div class="head">
+    <div class="kick">Support</div>
+    <h2 class="title">Help is always one step away</h2>
+    <p class="sub">Go in this order. Most things are solved at step 1.</p>
+  </div>
+  <div class="close-grid">
+    <div class="esc">
+      <div class="mailrow"><span class="ibox" data-ic="mail"></span><p><b>Official communication channel</b><span class="em">UST Elevate &lt;elevate@ust.com&gt;</span><span>All official programme communication comes from, and goes to, this address.</span></p></div>
+      <div><span class="ibox" data-ic="users"></span><p><b>Your Pod Coach</b><span>Learning, pod issues, first help. <span class="ph">Contact</span></span></p></div>
+      <div><span class="ibox" data-ic="book"></span><p><b>Program Lead</b><span>Schedules, SkillAssist, attendance, access. <span class="ph">Contact</span></span></p></div>
+      <div><span class="ibox" data-ic="shield"></span><p><b>Manager, Operations and Governance</b><span>Escalations and Play Fair questions. <span class="ph">Contact</span></span></p></div>
+      <div><span class="ibox" data-ic="monitor"></span><p><b>Techademy SkillAssist</b><span>Everything official lives here. <span class="ph">Link</span></span></p></div>
+    </div>
+    <div class="qa">
+      <h3>Questions?</h3>
+      <p>Ask anything now. After today, check SkillAssist first, then your Pod Coach, and write to elevate@ust.com for anything official.</p>
+      <div class="tag">Ship every sprint. Play fair. Grow fast.</div>
+    </div>
+  </div>
+</section>
+
+
+  </main>
+  <div class="dock" id="dock">
+    <button id="prev" class="nb" title="Previous"></button>
+    <span class="crumb" id="crumb"></span>
+    <div class="subwrap" id="subwrap"><div class="subtabs" id="subtabs"></div><span class="sublbl" id="sublbl"></span></div>
+    <button id="next" class="nb nx" title="Next"></button>
+    <button class="fsbtn" id="fsbtn" title="Full screen (F)" aria-label="Full screen"><span data-ic="expand"></span></button>
+  </div>
+</div>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const slides=$$('.slide'); const inited=new Set();
+/* ---------- slide logic ---------- */
+const INIT={};
+const T=[];function later(f,ms){T.push(setTimeout(f,ms))}
+
+const TL=[['p','$ elevate --start'],['p','  finding your pod... 5 to 6 teammates'],['h','> Phase 1  Foundation, Python'],['ok','  ✓ Python CLI application'],['ok','  ✓ Flask REST API with MySQL'],['ok','  ✓ Dynamic front-end pages'],['ok','  ✓ Full-stack Flask application'],['h','  ◆ Gate 1 cleared'],['h','> Phase 2  Specialisation, your track'],['h','  ◆ Gate 2 cleared, offer letter issued'],['h','> Phase 3  Onboarding'],['h','> Phase 4  AI Fluency'],['ok','  ✓ Capstone built with Claude'],['ok','  ✓ Claude Certified Developer'],['p','$ ready'],['h','  Your UST journey starts here.']];
+let termRun=0;
+INIT.cover=(s)=>{const run=++termRun;const box=$('#term');box.innerHTML=TL.map(l=>`<div class="ln ${l[0]}">${l[1]}</div>`).join('');
+  const L=$$('.ln',box),T=$$('#cvt div');T.forEach(d=>d.classList.remove('in'));
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  (async()=>{await sleep(600);for(let i=0;i<L.length;i++){if(run!==termRun)return;L[i].classList.add('on');const el=L[i];setTimeout(()=>{if(run===termRun){el.classList.remove('on');el.classList.add('soft')}},1300);
+    if(i===6)T[0].classList.add('in');if(i===9)T[3].classList.add('in');if(i===13)T[1].classList.add('in');if(i===15)T[2].classList.add('in');await sleep(420);}
+    T.forEach(d=>d.classList.add('in'));})();
+};
+
+
+/* journey */
+const J=[
+ {id:'f',x:13,type:'n',n:'Foundation',d:'10 weeks',h:'Phase 1, Foundation (Python)',m:'10 weeks, 4 sprints, everyone',li:['Python, Flask, SQL and web UI, built hands-on','A working deliverable at the end of every sprint','External review with a viva after each sprint','Track placement decided at Gate 1']},
+ {id:'g1',x:27,type:'g',n:'Gate 1',h:'Gate 1',m:'70% to pass, end of Foundation',li:['Pass mark 70%: weighted average of the 4 sprint reviews, weighted 30, 20, 30 and 20 percent','Every sprint review is evaluated by external experts','Below 70%: one retest, a 5th sprint, needing 75% in its review','Clears you for Specialisation and sets your track']},
+ {id:'s',x:41,type:'n',n:'Specialisation',d:'3 to 8 weeks',h:'Phase 2, Specialisation',m:'Demand-based, length depends on track',li:['Java, .NET, SDET, Data Engineering, Node and more','App review at the end of every sprint','Production-style full-stack build','Starts two working days after Sprint 4']},
+ {id:'g2',x:55,type:'g',n:'Gate 2',h:'Gate 2',m:'70% to pass, end of Specialisation',li:['Pass mark 70%: weighted average of all sprint review scores in your track','Every sprint review is evaluated by external experts','Below 70%: one retest, an additional sprint, needing 75% in its review','Clearing it completes pre-onboarding and your offer letter follows']},
+ {id:'ol',x:66,type:'g',cls:'offer',n:'Offer letter',h:'Offer letter',m:'Issued after pre-onboarding',li:['Issued only after you clear Foundation and Specialisation','Any Red Card before this cancels your LOI','This is where you formally become a UST hire','Details shared on SkillAssist']},
+ {id:'o',x:77,type:'n',n:'Onboarding',d:'After joining',h:'Phase 3, Onboarding',m:'Starts on your joining day',li:['Joining formalities and UST systems','Induction into how UST works','Project-ready setup']},
+ {id:'a',x:91,type:'n',n:'AI Fluency & Professional Excellence',d:'Final phase',h:'Phase 4, AI Fluency & Professional Excellence',m:'Build with AI, work like a professional',li:['Capstone project built with Claude','Claude Certified Developer, Foundations (CCDV-F)','Fair AI use and best practices','Campus to Corporate, Power Skills and Business Skills']}
+];
+let jBuilt=false;
+const JSEQ=[['s'],['l',[],.5],['c',0,'code','Phase 1'],['l',[1],1],['c',2,'layers','Phase 2'],['l',[3,4],2.8],['c',5,'badge','Phase 3'],['l',[],.6],['c',6,'sparkles','Phase 4']];
+const JSUB={1:'70% to pass',3:'70% to pass'};
+INIT.journey=(s)=>{
+  const map=$('#jmap');
+  if(!jBuilt){let d=0;JSEQ.forEach(q=>{let el;
+    if(q[0]==='s'){el=document.createElement('div');el.className='jstart2';el.innerHTML='<div class="pin">LOI</div><span>You are here</span>';}
+    else if(q[0]==='l'){el=document.createElement('div');el.className='jl';el.style.setProperty('--n',q[2]);el.style.setProperty('--d',(d++*0.35)+'s');
+      q[1].forEach(i=>{const m=document.createElement('button');m.className='jm'+(J[i].cls?' '+J[i].cls:'');m.dataset.j=i;m.innerHTML=`<span class="t">${J[i].n}</span><i></i><span class="u">${JSUB[i]||''}</span>`;m.onclick=()=>selJ(i);el.appendChild(m)});}
+    else{const p=J[q[1]];el=document.createElement('button');el.className='jc';el.dataset.j=q[1];el.innerHTML=`<span class="ibox" data-ic="${q[2]}"></span><small>${q[3]}</small><b>${p.n}</b><em>${p.d}</em>`;el.onclick=()=>selJ(q[1]);}
+    map.appendChild(el)});jBuilt=true;}
+  map.classList.remove('go');requestAnimationFrame(()=>requestAnimationFrame(()=>map.classList.add('go')));
+  selJ(0);
+};
+function selJ(i){const p=J[i];$$('#jmap [data-j]').forEach(e=>e.classList.toggle('sel',+e.dataset.j===i));
+  const d=$('#jdet');d.innerHTML=`<div><h3>${p.h}</h3><div class="meta">${p.m}</div></div><ul>${p.li.map(x=>`<li>${x}</li>`).join('')}</ul>`;d.classList.remove('fadein');void d.offsetWidth;d.classList.add('fadein');}
+
+
+INIT.gate=(s)=>{const a=$('.gin',s),r=$('.grin',s);const up=()=>{const v=+a.value,rv=+r.value;$('.gv',s).textContent=v+'%';$('.gv',s).style.color=v>=70?'#2E7D32':'#ED6C02';
+  $('.gpass',s).classList.toggle('on',v>=70);$('.gre',s).classList.toggle('on',v<70);$('.grv',s).textContent=rv+'%';
+  const o=$('.grres',s);o.className='grres '+(rv>=75?'ok':'no');o.textContent=rv>=75?'75% or more: gate cleared':'Below 75%: retest not cleared';};
+  a.oninput=up;r.oninput=up;up();};
+
+
+const SETCK=['Laptop meets the minimum specification','Python 3.11+, VS Code and Git installed','MySQL 8 and Workbench installed','Postman installed','GitHub account created','Techademy SkillAssist login works'];
+INIT.setup=(s,first)=>{if(!first)return;const c=$('#setchecks');SETCK.forEach(x=>{const b=document.createElement('button');b.className='ck';b.innerHTML=`<i></i>${x}`;b.onclick=()=>{b.classList.toggle('on');const n=$$('#setchecks .ck.on').length;$('#setbar').style.width=(n/SETCK.length*100)+'%';$('#settxt').textContent=n===SETCK.length?'Ready for Day 1':`${n} of ${SETCK.length} ready`};c.appendChild(b)})};
+
+
+const TSI={head:['Header','Who you are: your name, track, pod and batch. The readiness band is the one-line summary a project manager reads first.','Your name is the first thing they see. Your work is the second.'],
+tiles:['Score tiles','Your Deployment Readiness Score and its four components: Engineering Execution, Learnability Index, App Review Score and Attendance.','Attendance sits next to your technical scores. It is visible to everyone who reads your transcript.'],
+skills:['Skill Profile','Eight engineering skills, each rated against defined bands and benchmarked against your batch average.','Shows where you are strong and where you still need support on a project.'],
+rolefit:['Role Fit','How well your profile fits each role, with a recommended role. This guides which project and role you are placed in.','You influence this every sprint through the work you ship.'],
+risk:['Risk and Support','Three lenses: Technical, Communication and Independence. Each shows the risk level and the support you need.','Low risk means you can be trusted to work with little supervision.'],
+journey:['Learning journey','Your sprint-by-sprint progress on one line, so a reader sees your trend, not just your end point.','Steady improvement reads better than one good sprint.'],
+story:['Your story','A short narrative written about your journey: how you worked, what you built and how you grew.','This is the part a project manager quotes in your first conversation.'],
+git:['Your work','Links to your sprint branches and pull requests, so your code speaks for itself.','Clean commits and real pull requests are visible evidence.']};
+INIT.tsample=(s,first)=>{if(first){$$('#mock .mkp').forEach(p=>p.onclick=e=>{e.stopPropagation();selTs(p.dataset.k)})}selTs('head')};
+function selTs(k){$$('#mock .mkp').forEach(p=>p.classList.toggle('sel',p.dataset.k===k));const t=TSI[k];$('#tsinfo').innerHTML=`<h4>${t[0]}</h4><p>${t[1]}</p><div class="pm"><b>Why it matters:</b> ${t[2]}</div>`;}
+
+/* count-up */
+function countUp(root){$$('[data-count]',root).forEach(el=>{const t=+el.dataset.count;const st=performance.now();const f=n=>{const p=Math.min(1,(n-st)/900);el.textContent=Math.round(t*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)})}
+INIT.found=(s)=>countUp(s);
+
+/* weeks */
+const W={1:['Git, Agile, Python',['Git and GitHub','Agile and Scrum','Python core','Comprehensions','Functions and scope']],
+2:['Python deep dive',['Data structures','Collections','Decorators','Classes and OOP','OOP pillars']],
+3:['OOP, exceptions, testing',['Inheritance','Dunder methods','Generators','Exceptions','pytest and testing']],
+4:['Flask REST API and SQL',['Blueprints','CRUD APIs','Validation and CORS','SQL DDL and DML','SQL queries']],
+5:['SQL joins and SQLAlchemy',['SQL joins','Aggregates','Subqueries','SQLAlchemy ORM','Flask-Migrate']],
+6:['HTML5 and CSS3 core',['Semantic HTML5','Forms and tables','Accessibility','Box model','CSS variables']],
+7:['CSS layouts and Bootstrap 5',['Flexbox','CSS Grid','Responsive design','Bootstrap grid','Bootstrap UI']],
+8:['JavaScript ES6+',['ES6 classes','Array methods','DOM and events','async and await','fetch() and modules']],
+9:['Flask client and Jinja2',['Jinja2 templates','Template inheritance','Services layer','Blueprint routes','Error handlers']],
+10:['Forms, session, demo',['Flask-WTF forms','CSRF and session','Live search','End-to-end CRUD','Demo and viva']]};
+const SP=w=>w<=3?{n:1,ship:'Python CLI application',rv:'External Review 1: viva and coding'}:w<=5?{n:2,ship:'Flask REST API with MySQL',rv:'External Review 2: viva and project'}:w<=8?{n:3,ship:'Dynamic front-end pages',rv:'External Review 3: viva and project'}:{n:4,ship:'Full-stack Flask application',rv:'External Review 4, final: demo, viva and code review. Gate 1 uses all four review scores.'};
+let wSel=1;
+function buildWeeks(){const b=$('#wkbtns');if(b.children.length)return;for(let i=1;i<=10;i++){const x=document.createElement('button');x.className='wk';x.textContent='Week '+i;x.onclick=()=>selWeek(i);b.appendChild(x);}}
+function selWeek(i){buildWeeks();wSel=i;$$('#wkbtns .wk').forEach((b,k)=>b.classList.toggle('sel',k+1===i));const [t,list]=W[i];const sp=SP(i);
+  const p=$('#wkpanel');p.innerHTML=`<div><h3>${t}</h3><div class="wmeta">Week ${i} of 10, Sprint ${sp.n}</div><div class="topics">${list.map((x,k)=>`<div><i>${String(k+1).padStart(2,'0')}</i>${x}</div>`).join('')}</div></div><div class="ship"><small>Sprint ${sp.n} deliverable</small><b>${sp.ship}</b><div class="rv">${sp.rv}</div></div>`;p.classList.remove('fadein');void p.offsetWidth;p.classList.add('fadein');}
+INIT.weeks=()=>selWeek(wSel);
+
+/* reviews checklist */
+const CK=['Flask REST API on port 5000','Flask client on port 5001','MySQL with DDL, DML and TCL','Jinja2 with Bootstrap 5','JavaScript ES6+ with fetch()','Full CRUD operations','All 4 external reviews','Clean Git history','API tested in Postman','Responsive on all devices'];
+INIT.reviews=(s,first)=>{if(!first)return;const c=$('#checks');CK.forEach(x=>{const b=document.createElement('button');b.className='ck';b.innerHTML=`<i></i>${x}`;b.onclick=()=>{b.classList.toggle('on');upd()};c.appendChild(b)});upd();};
+function upd(){const n=$$('#checks .ck.on').length;const p=n/CK.length;$('#mring').style.strokeDashoffset=477.5*(1-p);$('#mpct').textContent=Math.round(p*100)+'%';$('#mtxt').textContent=n===CK.length?'Ready for the final review':`${n} of ${CK.length} in place`;$('#mring').setAttribute('stroke',n===CK.length?'#2E7D32':'#006E74');}
+
+/* tracks */
+const TR=[
+ {n:'Java',w:'6',sp:'3 sprints',line:'Build a production-ready full-stack Java application.',tags:['Java 25','Spring Boot 4','Spring Data JPA','React 19'],s:[['Weeks 1 to 2','Core Java, JDBC, console app','Java 25, collections, streams, JDBC, JUnit 5, Mockito','App Review 1'],['Weeks 3 to 4','Spring Boot, JPA, Security','REST APIs, Spring Data JPA, Spring Security with JWT','App Review 2'],['Weeks 5 to 6','React, DevOps, cloud deploy','React 19, CI/CD, Docker, cloud deployment','Final demo and review']]},
+ {n:'.NET',w:'6',sp:'3 sprints',line:'Build a production-ready full-stack .NET application.',tags:['C# 14','ASP.NET Core 10','EF Core 10','Angular 22'],s:[['Weeks 1 to 2','C#, ADO.NET, console app','C# type system, LINQ, SQL Server, xUnit, Moq','App Review 1'],['Weeks 3 to 4','Web API, EF Core, Identity, JWT','EF Core, API controllers, ASP.NET Identity, JWT','App Review 2'],['Weeks 5 to 6','Angular, DevOps, cloud deploy','Angular 22, RxJS, CI/CD, Docker, cloud deployment','Final demo and review']]},
+ {n:'SDET',w:'6',sp:'3 sprints',line:'Test and automate software the way delivery teams do.',tags:['Test automation','Quality engineering'],lms:true},
+ {n:'Data Engineering',w:null,line:'Build and run data pipelines.',tags:['Data pipelines'],lms:true},
+ {n:'Node',w:null,line:'Build full-stack JavaScript applications.',tags:['JavaScript','Node'],lms:true}
+];
+let tSel=0;
+INIT.tracks=(s,first)=>{if(first){const tb=$('#ttabs');TR.forEach((t,i)=>{const b=document.createElement('button');b.className='tab';b.textContent=t.n;b.onclick=()=>selT(i);tb.appendChild(b)});}selT(tSel)};
+function selT(i){tSel=i;$$('#ttabs .tab').forEach((b,k)=>b.classList.toggle('sel',k===i));const t=TR[i];
+  const left=`<div><div class="big">${t.w?t.w+'<small>weeks</small>':'<small style="margin:0">Duration on SkillAssist</small>'}</div>${t.sp?`<div class="mono" style="font-size:12px;color:#6B7280;margin-top:8px">${t.sp}, review every sprint</div>`:''}<div class="ln">${t.line}</div><div class="tg">${t.tags.map(x=>`<span>${x}</span>`).join('')}</div></div>`;
+  const right=t.lms?`<div class="lmsbox"><b>Full curriculum on SkillAssist</b><p>This track opens when client demand needs it. Topics, sprints and reviews are published on SkillAssist before the track starts.</p></div>`:`<div class="sprints3">${t.s.map(x=>`<div class="s3"><div class="k">${x[0]}</div><div class="t">${x[1]}<small>${x[2]}</small></div><div class="r">${x[3]}</div></div>`).join('')}</div>`;
+  const b=$('#tbody');b.innerHTML=`<div class="trk">${left}${right}</div>`;b.classList.remove('fadein');void b.offsetWidth;b.classList.add('fadein');}
+
+/* placement */
+INIT.place=(s,first)=>{
+  const se=$('#seats');if(first){for(let i=0;i<30;i++)se.appendChild(document.createElement('i'));}
+  $$('#dem span').forEach(x=>{x.style.width=0});$$('#sig i').forEach(x=>x.style.setProperty('--h','0%'));$$('#seats i').forEach(x=>x.classList.remove('f'));
+  later(()=>$$('#dem span').forEach(x=>x.style.width=x.style.getPropertyValue('--v')),200);
+  later(()=>$$('#sig i').forEach(x=>x.style.setProperty('--h',x.style.getPropertyValue('--v'))),500);
+  $$('#seats i').forEach((x,i)=>later(()=>x.classList.add('f'),1100+i*45));
+};
+
+/* AI fluency */
+const AF=[
+ {t:'Capstone project with Claude',ic:'sparkles',p:'Build an end-to-end project using Claude as your engineering partner.',o:'Output: capstone demo and review'},
+ {t:'Claude Certified Developer',ic:'award',p:'Prepare for and sit the proctored Claude Certified Developer, Foundations exam. It covers building apps and agents with the Claude API, Claude Code and MCP.',o:'Output: CCDV-F certification'},
+ {t:'Fair AI use and best practices',ic:'scale',p:'Use AI responsibly: protect data, declare AI use, check what it gives you.',o:'Output: acknowledgement and assessment'},
+ {t:'Campus to Corporate',ic:'briefcase',p:'How UST works: culture, values, professional conduct and client etiquette.',o:'Output: session completion'},
+ {t:'Power Skills and Business Skills',ic:'mic',p:'Communication, presentation, working with stakeholders and understanding the business.',o:'Output: evidence logged in your transcript'}
+];
+let aSel=0;
+INIT.aif=(s,first)=>{
+  if(first){const svg=$('#asvg');const cx=200,cy=200,R=190,r=118,n=AF.length,gap=.03;let h='';
+    AF.forEach((a,i)=>{const a0=-Math.PI/2+i*2*Math.PI/n+gap,a1=-Math.PI/2+(i+1)*2*Math.PI/n-gap;const P=(rr,a)=>[cx+rr*Math.cos(a),cy+rr*Math.sin(a)];const [x0,y0]=P(R,a0),[x1,y1]=P(R,a1),[x2,y2]=P(r,a1),[x3,y3]=P(r,a0);
+      h+=`<path class="seg" data-i="${i}" d="M${x0},${y0}A${R},${R} 0 0 1 ${x1},${y1}L${x2},${y2}A${r},${r} 0 0 0 ${x3},${y3}Z"/>`;
+      const [tx,ty]=P((R+r)/2,(a0+a1)/2);h+=`<text x="${tx}" y="${ty+5}" text-anchor="middle" style="font:600 15px Archivo,sans-serif;pointer-events:none" data-t="${i}">${i+1}</text>`;});
+    svg.innerHTML=h;$$('.seg',svg).forEach(p=>p.onclick=()=>selA(+p.dataset.i));
+    const l=$('#alist');AF.forEach((a,i)=>{const b=document.createElement('button');b.className='ai';b.innerHTML=`<span class="ibox" data-ic="${a.ic}"></span><div><h4>${a.t}</h4><p>${a.p}</p><div class="out">${a.o}</div></div>`;b.onclick=()=>selA(i);l.appendChild(b)});}
+  selA(aSel);
+};
+function selA(i){aSel=i;$$('#asvg .seg').forEach((p,k)=>{p.setAttribute('fill',k===i?'#006E74':(k<i?'#0097AC':'#E8F2F3'))});$$('#asvg text').forEach((t,k)=>t.setAttribute('fill',k<=i?'#fff':'#006E74'));$$('#alist .ai').forEach((b,k)=>b.classList.toggle('sel',k===i));$('#acenter').innerHTML=`<div><b>${AF[i].t}</b><span>${i+1} of 5</span></div>`;}
+
+/* loop */
+INIT.loop=()=>{const l=$$('#loop .lp');l.forEach(x=>x.classList.remove('on'));l.forEach((x,i)=>later(()=>x.classList.add('on'),300+i*300));};
+
+/* SkillAssist hub */
+const HN=[
+ {t:'eLearning courses',p:'Self-paced courses for every topic in your sprint. Do them before the session, not after.',c:1},
+ {t:'Master Classes',p:'Live sessions with Master Trainers on the hard topics. Schedules and recordings are on SkillAssist.',c:1},
+ {t:'Assignments',p:'Daily and weekly tasks. Submit on SkillAssist only. Late or off-SkillAssist submissions do not count.',c:1},
+ {t:'Capstone project',p:'Your capstone brief, milestones and submission all sit on SkillAssist.',c:1},
+ {t:'Schedules',p:'Your batch calendar, sessions, reviews and gate dates.'},
+ {t:'Scores and transcript',p:'Review results, feedback and your digital transcript.'},
+ {t:'Announcements',p:'Official updates. If it is not posted here, it is not official.'},
+ {t:'Attendance',p:'Your attendance and login record.'}
+];
+INIT.lms=(s,first)=>{if(first){const hub=$('#hub'),svg=$('#hubsvg');const cx=220,cy=210,R=170;let h='';
+  HN.forEach((n,i)=>{const a=-Math.PI/2+i*2*Math.PI/HN.length;const x=cx+R*Math.cos(a),y=cy+R*Math.sin(a)*0.95;
+    h+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="${n.c?'#006E74':'#E1E6E8'}" stroke-width="${n.c?2:1}" stroke-dasharray="${n.c?'0':'4 4'}"/>`;
+    const b=document.createElement('button');b.className='hnode'+(n.c?' core4':'');b.style.left=x+'px';b.style.top=y+'px';b.textContent=n.t;b.onmouseenter=b.onclick=()=>selH(i);hub.appendChild(b);});
+  svg.innerHTML=h;}selH(0);};
+function selH(i){$$('#hub .hnode').forEach((b,k)=>b.classList.toggle('sel',k===i));$('#lmst').textContent=HN[i].t;$('#lmsp').textContent=HN[i].p;}
+
+/* pod */
+const ROLES=['Sprint lead','Code reviewer','Demo lead'];let rot=0;
+INIT.pod=(s,first)=>{if(first){const v=$('#podv');for(let i=0;i<6;i++){const a=-Math.PI/2+i*Math.PI/3;const d=document.createElement('div');d.className='seat';d.style.left=(200+160*Math.cos(a))+'px';d.style.top=(200+160*Math.sin(a))+'px';v.appendChild(d)}
+  const c=document.createElement('div');c.className='seat coach';c.style.left='360px';c.style.top='40px';c.style.width='76px';c.style.height='76px';c.style.margin='-38px';c.innerHTML='Pod<br>Coach';v.appendChild(c);
+  $('#rotbtn').onclick=()=>{rot=(rot+1)%6;paintPod()};}paintPod();};
+function paintPod(){const seats=$$('#podv .seat:not(.coach)');seats.forEach((d,i)=>{const r=(i-rot+6)%6;d.classList.toggle('r',r<3);d.innerHTML=r<3?ROLES[r].replace(' ','<br>'):'L'+(i+1);});$('#rotlab').textContent=`Sprint ${rot+1} roles`;}
+
+/* day */
+const DAY=[
+ {s:9,e:9.5,t:'Daily scrum',p:'Fifteen minutes with your pod: what you did, what you will do, what blocks you. Then plan the day.',w:'TPM, your pod'},
+ {s:9.5,e:11,t:'SkillAssist learning block',p:'eLearning and reading for today\'s topic, so you arrive at the build block ready.',w:'You, on SkillAssist'},
+ {s:11,e:13,t:'Build block',p:'Hands-on coding on your sprint tasks. Commit early, commit often.',w:'You and your pod'},
+ {s:13,e:14,t:'Break',p:'Step away from the screen. Recharge.',w:'Everyone',brk:1},
+ {s:14,e:15.5,t:'Master Class or mentor clinic',p:'Live session on a hard topic, or bring your questions to a mentor.',w:'Master Trainer, mentors'},
+ {s:15.5,e:17.5,t:'Pod build and peer review',p:'Integrate your work, review each other\'s code, fix what the review finds.',w:'Your pod, TPM'},
+ {s:17.5,e:18,t:'EOD status update',p:'Send your end-of-day status to your Pod Coach, in a meeting or by email, and log your work and commits in SkillAssist.',w:'You, to your Pod Coach'}
+];
+const D0=9,D1=18;let dT=9,dPlay=null;
+function fmt(h){const H=Math.floor(h),M=Math.round((h-H)*60);return `${String(H).padStart(2,'0')}:${String(M===60?0:M).padStart(2,'0')}`}
+INIT.day=(s,first)=>{const tr=$('#dtrack');if(first){DAY.forEach(d=>{const b=document.createElement('div');b.className='dblock'+(d.brk?' brk':'');b.style.left=((d.s-D0)/(D1-D0)*100)+'%';b.style.width=((d.e-d.s)/(D1-D0)*100)+'%';tr.appendChild(b)});
+  for(let h=9;h<=18;h++){const t=document.createElement('div');t.className='dtick';t.style.left=((h-D0)/(D1-D0)*100)+'%';t.textContent=h+':00';tr.appendChild(t)}
+  const set=e=>{const r=tr.getBoundingClientRect();let p=(e.clientX-r.left)/r.width;p=Math.max(0,Math.min(.999,p));setDay(D0+p*(D1-D0))};
+  let drag=false;tr.addEventListener('pointerdown',e=>{drag=true;tr.setPointerCapture(e.pointerId);stopPlay();set(e)});tr.addEventListener('pointermove',e=>{if(drag)set(e)});tr.addEventListener('pointerup',()=>drag=false);
+  $('#dplay').onclick=()=>{if(dPlay){stopPlay();return}if(dT>=17.9)dT=9;$('#dplay').textContent='Pause';dPlay=setInterval(()=>{dT+=.04;if(dT>=17.99){dT=17.99;stopPlay()}setDay(dT)},40)};}
+  setDay(dT);};
+function stopPlay(){clearInterval(dPlay);dPlay=null;$('#dplay').textContent='Play the day'}
+let dLast=-1;
+function setDay(h){dT=h;$('#dhand').style.left=((h-D0)/(D1-D0)*100)+'%';const i=DAY.findIndex(d=>h>=d.s&&h<d.e);$$('#dtrack .dblock').forEach((b,k)=>b.classList.toggle('on',k===i));if(i<0)return;
+  if(i!==dLast){const d=DAY[i];const r=$('#dread');r.innerHTML=`<div class="tm" id="dtm">${fmt(h)}<small>${fmt(d.s)} to ${fmt(d.e)}</small></div><div><h3>${d.t}</h3><p>${d.p}</p></div><div class="who"><b>With</b>${d.w}</div>`;r.classList.remove('fadein');void r.offsetWidth;r.classList.add('fadein');dLast=i}
+  else{$('#dtm').firstChild.nodeValue=fmt(h)}}
+
+/* roles */
+const RL=[
+ {tier:'Sponsor',r:[
+  {n:'CLO',f:'Chief Learning Officer',l:'Programme sponsor',d:['Sponsors the programme','Sets the learning vision','Final level of escalation'],g:'Rarely directly. Your concerns reach the CLO through the escalation path.'}]},
+ {tier:'Leadership',r:[
+  {n:'Program Manager',f:'Program Manager',l:'Strategy and business alignment',d:['Aligns training to client demand','Owns strategy and track demand','Approves Red Card decisions'],g:'Through the Manager, Operations and Governance.'}]},
+ {tier:'Programme',r:[
+  {n:'Manager, Operations and Governance',f:'Manager, Operations and Governance',l:'Governance and compliance',d:['Owns the ways of working','Classifies Non-Adherence incidents','Recommends Red Card decisions','Handles escalations'],g:'When an issue is not solved by your Pod Coach or the Program Lead.'},
+  {n:'Program Lead',f:'Program Lead',l:'Day-to-day delivery',d:['Runs schedules and batches','Owns Techademy SkillAssist and attendance','Closes and archives records'],g:'Schedules, SkillAssist access, attendance and logistics.'}]},
+ {tier:'Delivery',r:[
+  {n:'TPM',f:'Technical Project Manager',l:'Owns delivery',d:['Plans sprints and tracks progress','Runs the daily scrum, reviews and retros like a real project','Checks deliverables meet the Definition of Done','Flags risks early'],g:'Sprint scope, deadlines and deliverable questions.'},
+  {n:'Master Trainer',f:'Master Trainer',l:'Technical quality',d:['Leads Master Classes','Sits on expert review panels','Sets the technical standard'],g:'Hard technical topics, in Master Classes and clinics.'},
+  {n:'Pod Coach',f:'Pod Coach',l:'Owns people',d:['Mentors your pod','Guides conduct and wellbeing','First level of help and escalation','Receives your EOD status update','Logs incidents with evidence'],g:'First, for anything. Learning, pod issues, blockers.'}]},
+ {tier:'You',r:[{n:'You, the learner',you:1}]}
+];
+const flatR=[];
+INIT.roles=(s,first)=>{if(first){const w=$('#tiers');RL.forEach(t=>{const row=document.createElement('div');row.className='tier'+(t.tier==='You'?' you':'');row.innerHTML=`<span>${t.tier}</span><div class="rs"></div>`;const rs=$('.rs',row);t.r.forEach(r=>{const b=document.createElement('button');b.className='role';b.textContent=r.n;if(!r.you){const i=flatR.length;flatR.push({...r,tier:t.tier});b.onclick=()=>selR(i);}rs.appendChild(b)});w.appendChild(row)});}selR(flatR.findIndex(r=>r.n==='Pod Coach'));};
+function selR(i){const btns=$$('#tiers .role:not(.tier.you .role)');let k=0;$$('#tiers .role').forEach(b=>{if(b.closest('.you'))return;b.classList.toggle('sel',k===i);k++});const r=flatR[i];const p=$('#rinfo');p.innerHTML=`<h3>${r.f}</h3><div class="lvl">${r.tier}, ${r.l}</div><ul>${r.d.map(x=>`<li>${x}</li>`).join('')}</ul><div class="go"><b>Go to them for:</b> ${r.g}</div>`;p.classList.remove('fadein');void p.offsetWidth;p.classList.add('fadein');}
+
+/* governance */
+const GV=[
+ {n:'Daily',ic:'clock',k:'every day',r:[['Daily scrum','TPM','Join on time, share progress and blockers'],['Attendance and login check','Program Lead','Log in on time, camera on where required'],['Daily update','You, on SkillAssist','Log work done and commits'],['EOD status update','You, to your Pod Coach','Share your end-of-day status in a meeting or by email']]},
+ {n:'Weekly',ic:'calendar',k:'every week',r:[['Pod scorecard review','TPM and Pod Coach','Know where your pod stands'],['Master Classes','Master Trainer','Attend live and prepare before'],['Progress check','Pod Coach','Raise risks early']]},
+ {n:'Sprint',ic:'refresh',k:'every sprint',r:[['Sprint planning','TPM','Agree the sprint goal and tasks'],['Sprint review evaluation and viva','External experts','Demo your work and explain it'],['Retrospective','TPM','Say what worked and what to fix']]},
+ {n:'Monthly',ic:'chart',k:'every month',r:[['Programme review','Manager, Operations and Governance','Your data feeds this review'],['Leadership review','Program Manager','Track demand and placement updates']]},
+ {n:'Gates',ic:'flag',k:'Gate 1 and 2',r:[['Gate 1, 70% weighted score of 4 sprint reviews','External experts','Clear it to move to Specialisation'],['Track placement','Program Manager, programme team','Your evidence decides your fit'],['Gate 2, 70% weighted score of track sprint reviews','External experts','Clear it to receive your offer letter']]}
+];
+INIT.gov=(s,first)=>{if(first){const c=$('#cad');GV.forEach((g,i)=>{const b=document.createElement('button');b.className='cd';b.innerHTML=`<span class="lab"><span class="ibox" data-ic="${g.ic}"></span>${g.n}</span><span>${g.k}</span>`;b.onclick=()=>selG(i);c.appendChild(b)});}selG(0)};
+function selG(i){$$('#cad .cd').forEach((b,k)=>b.classList.toggle('sel',k===i));const tb=$('#gbody');tb.innerHTML=GV[i].r.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');tb.classList.remove('fadein');void tb.offsetWidth;tb.classList.add('fadein');}
+
+/* evaluation */
+INIT.eval=(s,first)=>{buildRadar(first);const rows=$$('#tx .row');rows.forEach(r=>r.classList.remove('in'));rows.forEach((r,i)=>later(()=>r.classList.add('in'),200+i*120));$('#drsmark').style.left='0';later(()=>{$('#drsmark').style.left='82%'},300);};
+const CW=[30,20,30,20],CS=[72,68,80,76];
+INIT.evhow=(s,first)=>{if(first){const c=$('#crows');CS.forEach((v,i)=>{const r=document.createElement('div');r.className='crow';r.innerHTML=`<span>Sprint ${i+1}</span><input type="range" min="40" max="100" value="${v}" aria-label="Sprint ${i+1} score"><output>${v}%</output><span class="wt">w${i+1} = ${CW[i]}%</span>`;$('input',r).oninput=calcG;c.appendChild(r)});calcG();}
+  const ef=$$('#evflow .ef');ef.forEach(e=>e.classList.remove('on'));ef.forEach((e,i)=>later(()=>e.classList.add('on'),300+i*350));};
+function calcG(){const ins=$$('#crows input');let g=0;ins.forEach((i,k)=>{i.nextElementSibling.textContent=i.value+'%';g+=+i.value*CW[k]/100});g=Math.round(g);const ok=g>=70;$('#cres').textContent=g+'%';$('#cres').style.color=ok?'#2E7D32':'#ED6C02';$('#cbar').style.width=g+'%';$('#cbar').style.background=ok?'#2E7D32':'#ED6C02';$('#cmsg').textContent=ok?'70% or more: gate cleared':'Below 70%: one retest, 75% needed in the extra sprint';$('#cmsg').style.color=ok?'#2E7D32':'#ED6C02';}
+
+
+/* cards */
+const PH=['Foundation','Specialisation','Onboarding','AI Fluency'];let sim={p:0,c:[],out:false};
+INIT.cards=(s,first)=>{if(first){$$('.card',s).forEach(c=>{const f=()=>c.classList.toggle('flip');c.onclick=f;c.onkeydown=e=>{if(e.key==='Enter'){e.stopPropagation();f()}}});
+  $('#simadd').onclick=()=>{if(sim.out)return;const n=sim.c.length;sim.c.push({p:sim.p,k:['y','o','r'][n]});if(n===2)sim.out=true;paintSim(n===0?'Yellow card, Heads-Up. Verbal warning, logged on your record.':n===1?'Orange card, Final Call. Written warning on file.':'Red card, Off the Pitch. Your LOI is cancelled.')};
+  $('#simnext').onclick=()=>{if(sim.out)return;if(sim.p<3){sim.p++;paintSim(sim.c.length?`You moved to ${PH[sim.p]}. Your ${sim.c.length===1?'Yellow':'Orange'} card comes with you.`:`You moved to ${PH[sim.p]} with a clean record.`)}};
+  $('#simsr').onclick=()=>{if(sim.out)return;sim.c.push({p:sim.p,k:'r',sr:1});sim.out=true;paintSim('Straight Red. Severe misconduct skips the warnings. After due process, your LOI is cancelled.')};
+  $('#simrst').onclick=()=>{sim={p:0,c:[],out:false};paintSim()};
+  const cs=$$('.card',s);cs.forEach((c,i)=>{c.style.transition='transform .6s cubic-bezier(.22,.61,.36,1)'});}
+  $$('.card',s).forEach(c=>c.classList.remove('flip'));paintSim();};
+function paintSim(msg){$('#simph').innerHTML=PH.map((p,i)=>`<div class="${i===sim.p?'cur':''}">${p}<span class="mini">${sim.c.filter(c=>c.p===i).map(c=>`<i class="${c.k}"></i>`).join('')}</span></div>`).join('');
+  const total=sim.c.length;$('#simst').innerHTML=`<b>${sim.out?'Out of the programme':total?`${total} card${total>1?'s':''} on your record`:'Clean record'}</b>${msg||'Log an incident, move to the next phase, then log another to see cards carry forward.'}`;
+  const last=sim.c[sim.c.length-1];let li=-1;if(last){li=last.k==='y'?0:last.k==='o'?1:(last.sr?3:2);}$$('#stage .card').forEach((c,i)=>c.classList.toggle('lift',i===li));}
+
+/* due process */
+let dpS=0;
+INIT.dp=()=>{dpS=0;paintDp();clearInterval(INIT._dpi);let k=0;INIT._dpi=setInterval(()=>{if(dpS>=4){clearInterval(INIT._dpi);return}dpS++;paintDp()},900);};
+$('#dpfwd').onclick=()=>{clearInterval(INIT._dpi);dpS=Math.min(4,dpS+1);paintDp()};$('#dpback').onclick=()=>{clearInterval(INIT._dpi);dpS=Math.max(0,dpS-1);paintDp()};
+function paintDp(){const st=$$('#dp .st');st.forEach((s,i)=>s.classList.toggle('on',i<=dpS));const w=$('#dp').offsetWidth;const step=w/5;$('#dpprog').style.width=(dpS*step)+'px';}
+
+/* milestones */
+const MS=[{x:4,l:'LOI',t:'You hold it today',w:'Now'},{x:20,l:'Foundation',t:'10 weeks, 4 sprints',w:'Weeks 1 to 10'},{x:36,l:'Gate 1',t:'70% to pass, track set',g:1,w:'End of week 10'},{x:52,l:'Specialisation',t:'3 to 8 weeks, by track',w:'After Gate 1'},{x:67,l:'Gate 2',t:'70% to pass',g:1,w:'End of track'},{x:81,l:'Offer letter',t:'Issued after pre-onboarding',g:1,o:1,w:'After Gate 2'},{x:95,l:'Joining',t:'First working Monday after Gate 2',w:'Then Onboarding'}];
+INIT.ms=(s,first)=>{const m=$('#ms');if(first){MS.forEach(x=>{const d=document.createElement('div');d.className='mst'+(x.g?' g':'')+(x.o?' offer':'');d.style.left=x.x+'%';d.innerHTML=`<div class="when">${x.w}</div><div class="mk"></div><div class="lb">${x.l}</div><div class="tx2">${x.t}</div>`;m.appendChild(d)});}
+  const l=$('#msline');l.style.transition='none';l.style.width='0';requestAnimationFrame(()=>{l.style.transition='';requestAnimationFrame(()=>l.style.width='100%')});};
+
+
+const CP=[['Foundation Programming','Can you write clean, structured code? Core syntax, OOP, data structures, readability, error handling',78],['Backend Development','Can you work on enterprise backend systems? Service architecture, config, security, DB integration',90],['API Design','Can you build and consume REST APIs? REST principles, validation, documentation, integration',80],['Database','Can you work with databases? SQL queries, schema design, ORM, optimisation',80],['Frontend','Can you work on the UI layer? HTML, CSS, JS, component design, API calls from the UI',90],['Testing','Do you write tests? Unit tests, coverage, TDD, integration testing',80],['Debugging','Can you find and fix issues? Logs, debugger, root cause, systematic approach',80],['Dev Workflow','Can you use dev tools? Git, IDE, build tools, CI/CD, task boards',80]];
+let rSel=0;
+function buildRadar(first){const svg=$('#radar');const n=CP.length,R=110;const P=(i,v)=>{const a=-Math.PI/2+i*2*Math.PI/n;return[(R*v/100)*Math.cos(a),(R*v/100)*Math.sin(a)]};
+ let g='';[25,50,75,100].forEach(l=>{g+=`<polygon points="${CP.map((c,i)=>P(i,l).join(',')).join(' ')}" fill="none" stroke="#E1E6E8"/>`});
+ CP.forEach((c,i)=>{const [x,y]=P(i,100);g+=`<line x1="0" y1="0" x2="${x}" y2="${y}" stroke="#E1E6E8"/>`});
+ g+=`<polygon id="rpoly" points="${CP.map((c,i)=>P(i,0).join(',')).join(' ')}" fill="rgba(0,151,172,.18)" stroke="#006E74" stroke-width="2" style="transition:all .9s cubic-bezier(.22,.61,.36,1)"/>`;
+ CP.forEach((c,i)=>{const [x,y]=P(i,c[2]);const [lx,ly]=P(i,128);const anc=Math.abs(lx)<10?'middle':lx>0?'start':'end';g+=`<g class="ax" data-i="${i}"><circle cx="${x}" cy="${y}" r="5" fill="#006E74" stroke="#fff" stroke-width="2"/><text x="${lx}" y="${ly+4}" text-anchor="${anc}">${c[0]}</text></g>`});
+ svg.innerHTML=g;$$('.ax',svg).forEach(a=>a.onclick=()=>selRadar(+a.dataset.i));
+ requestAnimationFrame(()=>requestAnimationFrame(()=>$('#rpoly').setAttribute('points',CP.map((c,i)=>P(i,c[2]).join(',')).join(' '))));selRadar(rSel);}
+function selRadar(i){rSel=i;$$('#radar .ax').forEach((a,k)=>a.classList.toggle('sel',k===i));const c=CP[i];$('#rcap').innerHTML=`<b>${c[0]}</b><span>${c[1]}</span>`;}
+
+
+const ICONS={"home": "<path d=\"M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z\"/>", "map": "<path d=\"M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14\"/>", "code": "<path d=\"m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14\"/>", "layers": "<path d=\"m12 3 9 5-9 5-9-5 9-5z\"/><path d=\"m3 13 9 5 9-5\"/>", "badge": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><circle cx=\"9\" cy=\"11\" r=\"2\"/><path d=\"M6 16c.8-1.6 1.9-2.4 3-2.4s2.2.8 3 2.4M14 10h4M14 14h4\"/>", "sparkles": "<path d=\"M11 3l1.8 4.6 4.7 1.9-4.7 1.9L11 16l-1.8-4.6L4.5 9.5l4.7-1.9z\"/><path d=\"M18.5 14l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z\"/>", "book": "<path d=\"M4 19V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2 2 2 0 0 0 2 2h13\"/><path d=\"M8 7h7\"/>", "users": "<circle cx=\"9\" cy=\"8\" r=\"3.2\"/><path d=\"M3 20c.6-3.4 3-5.5 6-5.5s5.4 2.1 6 5.5\"/><path d=\"M16 4.6a3 3 0 0 1 0 6M18 14.8c1.7.7 2.8 2.5 3 5.2\"/>", "shield": "<path d=\"M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z\"/><path d=\"m9 12 2 2 4-4\"/>", "chart": "<path d=\"M4 20V11M10 20V5M16 20v-6M2 20h20\"/>", "flag": "<path d=\"M5 21V4h11l-2 4 2 4H5\"/>", "milestone": "<path d=\"M12 3v18M5 7h11l3 3-3 3H5z\"/>", "help": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7M12 17h.01\"/>", "terminal": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"m7 9 3 3-3 3M13 15h4\"/>", "database": "<ellipse cx=\"12\" cy=\"5.5\" rx=\"7\" ry=\"2.5\"/><path d=\"M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5\"/>", "layout": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M3 9h18M9 9v11\"/>", "plug": "<path d=\"M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0zM12 17v4\"/>", "file": "<path d=\"M6 3h8l4 4v14H6z\"/><path d=\"M14 3v4h4M9 13h6M9 17h6\"/>", "calendar": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M3 10h18M8 3v4M16 3v4\"/>", "rocket": "<path d=\"M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2\"/><path d=\"M9 15l-3-3c1-4 4.5-8.5 12-9-.5 7.5-5 11-9 12z\"/><circle cx=\"14.5\" cy=\"9.5\" r=\"1.5\"/>", "award": "<circle cx=\"12\" cy=\"9\" r=\"6\"/><path d=\"M8.5 14 7 21l5-2.5 5 2.5-1.5-7\"/>", "scale": "<path d=\"M12 3v18M7 21h10M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z\"/>", "briefcase": "<rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"2\"/><path d=\"M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18\"/>", "mic": "<rect x=\"9\" y=\"3\" width=\"6\" height=\"11\" rx=\"3\"/><path d=\"M5 11a7 7 0 0 0 14 0M12 18v3\"/>", "hammer": "<path d=\"M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-.5-.5-2.5z\"/>", "refresh": "<path d=\"M20 11a8 8 0 0 0-14.5-4.5L4 8M4 4v4h4M4 13a8 8 0 0 0 14.5 4.5L20 16M20 20v-4h-4\"/>", "monitor": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"12\" rx=\"2\"/><path d=\"M8 20h8M12 16v4\"/>", "check": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"m8 12 3 3 5-6\"/>", "target": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><circle cx=\"12\" cy=\"12\" r=\"5\"/><circle cx=\"12\" cy=\"12\" r=\"1\"/>", "eye": "<path d=\"M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/>", "alert": "<path d=\"M12 3 2 20h20z\"/><path d=\"M12 10v4M12 17h.01\"/>", "clock": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 2\"/>", "mail":"<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"m3 7 9 6 9-6\"/>","expand":"<path d=\"M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5\"/>","laptop":"<rect x=\"3\" y=\"5\" width=\"18\" height=\"12\" rx=\"2\"/><path d=\"M2 20h20\"/>","wifi":"<path d=\"M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0M12 20h.01\"/>","download":"<path d=\"M12 4v12m0 0 4-4m-4 4-4-4M4 20h16\"/>","key":"<circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"m11 12 9-9m-3 3 3 3m-5-1 2 2\"/>","left": "<path d=\"M15 5l-7 7 7 7\"/>", "right": "<path d=\"m9 5 7 7-7 7\"/>", "grid": "<rect x=\"3\" y=\"3\" width=\"7\" height=\"7\" rx=\"1.5\"/><rect x=\"14\" y=\"3\" width=\"7\" height=\"7\" rx=\"1.5\"/><rect x=\"3\" y=\"14\" width=\"7\" height=\"7\" rx=\"1.5\"/><rect x=\"14\" y=\"14\" width=\"7\" height=\"7\" rx=\"1.5\"/>"};
+function hyd(root){$$('[data-ic]:not([data-h])',root||document).forEach(e=>{e.innerHTML=`<svg class="i" viewBox="0 0 24 24">${ICONS[e.dataset.ic]||''}</svg>`;e.dataset.h=1})}
+new MutationObserver(()=>hyd()).observe(document.body,{childList:true,subtree:true});
+const IDS=['welcome','journey','foundation','weeks','reviews','gate1','specialisation','placement','gate2','onboarding','ai-fluency','setup','how-you-learn','lms','pod','day','roles','governance','evaluation','transcript','transcript-sample','play-fair','incidents','due-process','milestones','support'];
+slides.forEach((s,i)=>{s.id=IDS[i];const d=document.createElement('div');d.className='slogo';d.innerHTML='<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQgAAAElBAMAAADq6mEkAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAPUExURQAAACQgICIeICMfICMfIJj2NbcAAAAEdFJOUwBAf78wcCB+AAAACXBIWXMAADLAAAAywAEoZFrbAAAEmElEQVR42u2cbXbiMAxFk7QLIJQFhMACaMICmtj7X9NMS6Gx/CVBZE5n3vvZ2MpFkh0knFZVGdXtYTxba8dhvyl0Sw9htAsN3dMRvjCIN0ZHQ8iEo3cxw9vZ+nKd4V4zAQh3xCxmsEH1JSEiDK4hZYgog2NJFyLBYO2+DERjk+qKQBzTEHZTAOItw3AzpghR5xhuAVGE2OUhZm0IhiOsPSlDvHIgjDLEmQNxyQo1iIbFcLGnBpHbI67aaEIwGeyHIgQzGpdbakGw1oY2BDclvpaHFgSXQXN1sFNiowjxwmR4rxQhAnlphr7vx6A1JQgvL813rVAfln/VfZRTCPNT7izSZapUIejTa1nsNEdKpgRBGCbnYvONeAqP1oIgtWdDTOlA5CY1LtlzID4Td1FaF4GYvAGNc6snQVRvy/XypHC4KgJhMsOLQNhMl0oHgu4Ts2S0FkTGFUoQ9NmRnqYE4T3K51QPVQnCr8hNIiJKEKGvd0PUGQUhrO0jGEoQseZEGEMJIt4YCGFoQSR6Rb03WAsiVXh4C0ULIt2xIr8maEFkKuK5KwKRKwT1v9Rk4+FSqEHkOxRdAYh8d6BElz/rirkARN4VBbr8jL6Vfpef4QqjD8FwhXaXn0Wh3eXnBeSkD5GnMAUgePumNkSWYioBUR3SEJoN9oX6bDwKQNy6dWF9yCEmOUMmJHMpiJ8GajApshDNKhBVtY1ibGiRogcRxziVhIhhfFAIv0Z7pTMe0jawUCYK4TcR1oUI7aAT/dspN+lhCH+5zrRw9UOepXzYF4ZC+GuUzFjh3FzjQdBfzHIzZBDhzgxNTq9kpDehkKKDjE34SbPLQdCkoAEUOeIcdpznfVq3kqRo0pfT2kUeui85CJL+1BHisiPkCj8PKYTx7NwLcYwl0at3x3PqPt5FwV71EsU+ehB+m62PjbaSvaq+fgDvLCt17xz8aX0gZhbibxPH6JydDxHsLQ1924+hC2yG5cftole+NDFPp4XyJS3Hi8v2aR3MM97JMCEEOQU57yMXro5iHBZ0oFlZ6c00/b5tt4fY8Wn2YSTLz0v22aJPBRMlM16YlVnNfg4xxq/siItRflJwoyFJs2+j3ONIfAi+xZtR9k7B3yXE0eCHkP/gEMTjuuq53uN/tRMsj1uIeetj3WauZ5S3X0m+aLNd8WOUlZort1EvWn6P4ySSrOJgumKZ6wxXrN7ApI7gLBBx/ceh6GRT5M0RRkBm2RRR0cOlMBvZlLuK8UwvN2Q0FRD5K2iMGHeyKXcypDvKEece12aoqi0/H5LgZi+5K1WklTtuRFPGR9/vDHwyk/Et6XeO7YMIf1X37lOa49r6WgCacbW3XLdXDpHNul39Ldu6Xd8mBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBP2jakaRhsfvGIKwIt1zJBIQgAAEIAABCEAAAhCAAAQgng9Rta7ISzozubzCOycMrfDvqwABiN8A0YdUGiK43wACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgXAVPrpWGuEOAAAQgAAEIQAACEIAABCAAAQhAAAIQ/yPEH1HFjNQXsRF7AAAAAElFTkSuQmCC" alt="UST">';s.appendChild(d);const g=document.createElement('div');g.className='gama';g.innerHTML='<span class="gm"><i></i><b>G A Menon Academy</b></span><b>UST Elevate</b>';s.appendChild(g);});
+const TABS=[
+ {g:'Introduction',n:'Welcome',ic:'home',p:['welcome'],s:['Welcome']},
+ {n:'Your journey',ic:'map',p:['journey'],s:['The path']},
+ {g:'Program design',n:'Foundation',ic:'code',p:['foundation','weeks','reviews','gate1'],s:['Overview','Week by week','External reviews','Gate 1']},
+ {n:'Specialisation',ic:'layers',p:['specialisation','placement','gate2'],s:['Tracks','Placement','Gate 2']},
+ {n:'Onboarding',ic:'badge',p:['onboarding'],s:['Onboarding']},
+ {n:'AI Fluency',ic:'sparkles',p:['ai-fluency'],s:['AI Fluency & Professional Excellence']},
+ {n:'Play Fair',ic:'flag',p:['play-fair','incidents','due-process'],s:['The cards','What counts','Due process']},
+ {g:'Getting ready',n:'Get set up',ic:'laptop',p:['setup'],s:['Laptop, internet, software']},
+ {g:'Working together',n:'How you learn',ic:'book',p:['how-you-learn','lms','pod','day'],s:['Approach','SkillAssist','Your pod','A day']},
+ {n:'Your support team',ic:'users',p:['roles'],s:['Roles']},
+ {n:'Ways of working',ic:'shield',p:['governance'],s:['The rhythm']},
+ {n:'Evaluation',ic:'chart',p:['evaluation','transcript','transcript-sample'],s:['How it works','Your transcript','Sample transcript']},
+ {g:'Finish line',n:'Milestones',ic:'milestone',p:['milestones'],s:['Offer letter']},
+ {n:'Support',ic:'help',p:['support'],s:['Support and Q&A']}
+];
+{let cg='';TABS.forEach(t=>{if(t.g)cg=t.g;t.p.forEach(id=>{const sl=document.getElementById(id);if(sl){const d=document.createElement('div');d.className='sgrp';d.textContent=cg;sl.insertBefore(d,sl.firstChild)}})})}
+const FLAT=[];TABS.forEach((t,ti)=>t.p.forEach((id,si)=>FLAT.push({ti,si,id})));
+const seenT=new Set();let pos=0;
+const nl=$('#navlist');
+TABS.forEach((t,ti)=>{if(t.g){const g=document.createElement('div');g.className='ngrp';g.textContent=t.g;nl.appendChild(g)}const b=document.createElement('button');b.className='ni';b.innerHTML=`<span class="ibox" data-ic="${t.ic}"></span><span>${t.n}</span><span>${t.p.length>1?`<span class="cnt">${t.p.length}</span>`:''}<span class="vt"></span></span>`;b.onclick=()=>show(FLAT.findIndex(f=>f.ti===ti));nl.appendChild(b);if(t.p.length>1){const d=document.createElement('div');d.className='nsub';d.dataset.ti=ti;d.innerHTML=t.s.map((x,i)=>`<button data-p="${FLAT.findIndex(q=>q.ti===ti&&q.si===i)}">${x}</button>`).join('');$$('button',d).forEach(x=>x.onclick=()=>show(+x.dataset.p));nl.appendChild(d)}});
+const seenP=new Set();
+function show(p){
+ p=Math.max(0,Math.min(FLAT.length-1,p));pos=p;const f=FLAT[p],t=TABS[f.ti];
+ slides.forEach(s=>{s.classList.remove('active','seen')});
+ const s=$('#'+f.id);s.classList.add('active');$('#stage').scrollTop=0;
+ requestAnimationFrame(()=>requestAnimationFrame(()=>s.classList.add('seen')));
+ seenT.add(f.ti);seenP.add(p);
+ $$('#navlist .ni').forEach((b,i)=>{b.classList.toggle('cur',i===f.ti);b.classList.toggle('seen',seenT.has(i))});
+ $('#crumb').textContent=t.n;
+ const pidx=i=>FLAT.findIndex(q=>q.ti===f.ti&&q.si===i);
+ $('#subtabs').innerHTML=t.p.length>1?t.s.map((x,i)=>`<button class="${i===f.si?'sel':''} ${seenP.has(pidx(i))?'':'nv'}" data-p="${pidx(i)}"><i>${i+1}</i>${x}</button>`).join(''):'';
+ $('#subwrap').classList.toggle('none',t.p.length<2);
+ if(t.p.length>1){const left=t.s.filter((x,i)=>!seenP.has(pidx(i))).length;const L=$('#sublbl');L.classList.toggle('done',!left);L.textContent=left?`${left} not opened`:`All opened`;}
+ $$('#navlist .nsub').forEach(d=>{d.classList.toggle('open',+d.dataset.ti===f.ti);$$('button',d).forEach(x=>{x.classList.toggle('sel',+x.dataset.p===p);x.classList.toggle('nv',!seenP.has(+x.dataset.p))})});
+ $$('#subtabs button').forEach(b=>b.onclick=()=>show(+b.dataset.p));
+ const pv=FLAT[p-1],nx=FLAT[p+1];const lab=q=>{const tt=TABS[q.ti];return tt.p.length>1?`${tt.n}, ${tt.s[q.si]}`:tt.n};
+ $('#prev').disabled=!pv;$('#next').disabled=!nx;$('#prev').title=pv?'Previous: '+lab(pv):'';$('#next').title=nx?'Next: '+lab(nx):'';
+ $('#prev').innerHTML=`<span data-ic="left"></span><span><small>Previous</small>${pv?lab(pv):''}</span>`;
+ $('#next').innerHTML=`<span><small>Next</small>${nx?lab(nx):''}</span><span data-ic="right"></span>`;
+ $('#sbar').style.width=(seenT.size/TABS.length*100)+'%';$('#scount').textContent=`${seenT.size} of ${TABS.length}`;
+ const i=slides.indexOf(s),k=s.dataset.init;if(INIT[k])INIT[k](s,!inited.has(i));inited.add(i);fit();setTimeout(fit,450);
+ try{history.replaceState(null,'','#'+f.id)}catch(e){}
+}
+function fs(){try{const p=!document.fullscreenElement?document.documentElement.requestFullscreen?.():document.exitFullscreen?.();p&&p.catch&&p.catch(()=>{})}catch(e){}}
+$('#fsbtn').onclick=fs;
+
+function fit(){const s=slides.find(x=>x.classList.contains('active'));if(!s)return;const st=$('#stage');const cs=getComputedStyle(st);
+ const ah=st.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
+ let lo=.6,hi=1.9,best=.6;
+ for(let k=0;k<13;k++){const z=(lo+hi)/2;s.style.zoom=z;s.style.minHeight='0px';
+   const ok=st.scrollHeight<=st.clientHeight+1&&st.scrollWidth<=st.clientWidth+1;if(ok){best=z;lo=z}else hi=z}
+ s.style.zoom=best;s.style.minHeight=Math.floor(ah/best)+'px';st.scrollTop=0;}
+let fitT;addEventListener('resize',()=>{clearTimeout(fitT);fitT=setTimeout(fit,120)});
+document.addEventListener('fullscreenchange',()=>setTimeout(fit,150));
+$('#stage').addEventListener('click',()=>setTimeout(()=>{const st=$('#stage');if(st.scrollHeight>st.clientHeight+1)fit()},60));
+$('#prev').onclick=()=>show(pos-1);$('#next').onclick=()=>show(pos+1);
+addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;
+ if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();show(pos+1)}
+ else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(pos-1)}
+ else if(e.key==='f'||e.key==='F')fs();
+ else if(e.key==='Home')show(0);else if(e.key==='End')show(FLAT.length-1);
+ else if(/^[0-9]$/.test(e.key)&&FLAT[pos].id==='weeks')selWeek(e.key==='0'?10:+e.key)});
+document.addEventListener('click',e=>{const g=e.target.closest('[data-goid]');if(g)show(FLAT.findIndex(f=>f.id===g.dataset.goid));const d=e.target.closest('[data-go]');if(d){if(d.dataset.wk)selWeek(+d.dataset.wk);show(FLAT.findIndex(f=>f.id===IDS[+d.dataset.go-1]))}});
+
+
+hyd();
+let h0='';try{h0=location.hash.slice(1)}catch(e){}
+const st=FLAT.findIndex(f=>f.id===h0);show(st<0?0:st);
+
+})();
+</script>
+</body>
+</html>
